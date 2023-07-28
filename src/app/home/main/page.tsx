@@ -41,9 +41,9 @@ const MainPageContent = () => {
         }}
       >
         <div className="absolute bottom-[10%] text-center w-full">
-          <p className="text-2xl text-gray-900 mb-4">Hi, I am</p>
+          <p className="text-2xl text-gray-400 mb-4">Hi, I am</p>
           <p className="text-5xl font-bold mb-4">Aabhushan Gautam</p>
-          <p className="text-2xl text-gray-900">
+          <p className="text-2xl text-gray-400">
             I am a{" "}
             <AnimatePresence mode="wait">
               <motion.span

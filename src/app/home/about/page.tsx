@@ -1,42 +1,67 @@
+"use client";
+
+import React from "react";
+import Icons from "@/components/@app/Icons";
 import PageWrapper from "@/components/@app/PageWrapper";
 import Ribbon from "@/components/@resuable/ribbon";
 import Image from "next/image";
-import React from "react";
-import { HiOutlineUser } from "react-icons/hi";
 
+//
+import { easeOut, motion } from "framer-motion";
+
+//
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, x: -20 },
+  show: { opacity: 1, x: 0 },
+};
+
+//
 const About = () => {
   return (
     <PageWrapper>
-      <div className="flex items-center justify-center gap-10 h-screen flex-col">
-        {/* Page Title -> this could be a component */}
-        <div className="flex items-center justify-center flex-col cursor-pointer">
-          <HiOutlineUser
-            className={
-              "h-20 w-20 p-4 border-white border rounded-full bg-transparent"
-            }
-          />
+      <motion.div
+        className="flex items-center justify-center gap-20 h-screen flex-col"
+        variants={container}
+        initial={"hidden"}
+        animate={"show"}
+        
+      >
+        <motion.div variants={item}>
+          <Ribbon title="Services" />
+        </motion.div>
 
-          <p
-            className="mt-4 text-4xl text-gray-400 font-bold"
-            style={{
-              letterSpacing: "-2px",
-            }}
-          >
-            about me
-          </p>
-        </div>
-
-        <Ribbon title="Services" />
-
-        <div className="flex justify-between gap-12 mt-10">
+        <motion.div
+          className="flex justify-between gap-12 mt-10 mb-4"
+          variants={item}
+        >
           <div className="flex justify-center items-center flex-col gap-4">
-            <Image
-              src={"/images/nextjs.svg"}
-              alt="svg logo"
-              width={200}
-              height={200}
-              className="h-16 w-16"
-            />
+            <motion.div
+              whileHover={{
+                scale: 1.5,
+                transition: {
+                  duration: 0.5,
+                  ease: easeOut,
+                },
+              }}
+            >
+              <Image
+                src={"/images/svg/nextjs.svg"}
+                alt="svg logo"
+                width={200}
+                height={200}
+                className="h-16 w-16 cursor-pointer"
+              />
+            </motion.div>
             <p className="font-bold text-2xl tracking-tighter">Fullstack</p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
@@ -45,13 +70,23 @@ const About = () => {
           </div>
 
           <div className="flex justify-center items-center flex-col gap-4">
-            <Image
-              src={"/images/react.png"}
-              alt="svg logo"
-              width={200}
-              height={200}
-              className="h-16 w-16"
-            />
+            <motion.div
+              whileHover={{
+                scale: 1.5,
+                transition: {
+                  duration: 0.5,
+                  ease: easeOut,
+                },
+              }}
+            >
+              <Image
+                src={"/images/react.png"}
+                alt="svg logo"
+                width={200}
+                height={200}
+                className="h-16 w-16 cursor-pointer"
+              />
+            </motion.div>
             <p className="font-bold text-2xl tracking-tighter">React Native</p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
@@ -61,13 +96,23 @@ const About = () => {
           </div>
 
           <div className="flex justify-center items-center flex-col gap-4">
-            <Image
-              src={"/images/googlescripts.png"}
-              alt="svg logo"
-              width={200}
-              height={200}
-              className="h-16 w-16"
-            />
+            <motion.div
+              whileHover={{
+                scale: 1.5,
+                transition: {
+                  duration: 0.5,
+                  ease: easeOut,
+                },
+              }}
+            >
+              <Image
+                src={"/images/googlescripts.png"}
+                alt="svg logo"
+                width={200}
+                height={200}
+                className="h-16 w-16 cursor-pointer"
+              />
+            </motion.div>
             <p className="font-bold text-2xl tracking-tighter">
               Google Scripts
             </p>
@@ -79,13 +124,23 @@ const About = () => {
           </div>
 
           <div className="flex justify-center items-center flex-col gap-4">
-            <Image
-              src={"/images/wordpress.png"}
-              alt="svg logo"
-              width={200}
-              height={200}
-              className="h-16 w-16"
-            />
+            <motion.div
+              whileHover={{
+                scale: 1.5,
+                transition: {
+                  duration: 0.5,
+                  ease: easeOut,
+                },
+              }}
+            >
+              <Image
+                src={"/images/wordpress.png"}
+                alt="svg logo"
+                width={200}
+                height={200}
+                className="h-16 w-16 cursor-pointer"
+              />
+            </motion.div>
             <p className="font-bold text-2xl tracking-tighter">Wordpress</p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
@@ -93,8 +148,124 @@ const About = () => {
               templates.
             </p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+
+        <motion.div variants={item}>
+          <Ribbon title="Skills" />
+        </motion.div>
+
+        <motion.div
+          className="mt-10 grid grid-cols-5 gap-6 gap-y-6"
+          variants={item}
+        >
+          <motion.div
+            whileHover={{
+              rotate: 180,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="react" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="js" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="node" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="ionic" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="html5" />
+          </motion.div>
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="css3" />
+          </motion.div>
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="php" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="wordpress" />
+          </motion.div>
+          <motion.div
+            whileHover={{
+              scale: 1.1,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="nextjs" />
+          </motion.div>
+
+          <motion.div
+            whileHover={{
+              rotate: 180,
+              transition: {
+                duration: 1,
+              },
+            }}
+          >
+            <Icons name="graphql" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </PageWrapper>
   );
 };
