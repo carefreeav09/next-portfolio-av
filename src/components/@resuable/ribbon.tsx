@@ -16,7 +16,7 @@ const Ribbon: React.FC<{ title: string }> = ({ title }) => {
           <polygon points="0,15 0,30 15,30" fill="currentColor" />
         </svg>
 
-        <div className="absolute bg-indigo-800 w-30 h-12 left-5 right-5 flex items-center justify-center top-0 shadow-sm shadow-indigo-800 text-2xl font-bolder tracking-tighter">
+        <div className="absolute bg-indigo-800 w-30 h-12 left-5 right-5 flex items-center justify-center top-0 shadow-sm shadow-indigo-800 text-xl font-bold">
           {title}
         </div>
 

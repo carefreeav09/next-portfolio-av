@@ -8,22 +8,9 @@ import Image from "next/image";
 
 //
 import { easeOut, motion } from "framer-motion";
+import { item, container } from "@/utils/common.utils";
 
 //
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-    },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, x: -20 },
-  show: { opacity: 1, x: 0 },
-};
 
 //
 const About = () => {
