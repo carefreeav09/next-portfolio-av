@@ -19,7 +19,7 @@ const TimelineBanner: React.FC<{
         <polygon points="0,15 0,30 15,30" fill="currentColor" />
       </svg>
 
-      <div className="absolute bg-gray-900 w-40 h-10 left-5 right-5 flex items-center justify-start top-0 text-sm font-bolder pl-4">
+      <div className="absolute bg-gray-900 w-40 h-10 left-3 right-5 flex items-center justify-start top-0 text-sm font-bolder pl-4 -mt-1">
         {startDate} {current || endDate ? "-" : ""}{" "}
         {current ? "Current" : endDate ?? ""}
       </div>

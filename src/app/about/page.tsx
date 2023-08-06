@@ -17,7 +17,7 @@ const About = () => {
   return (
     <PageWrapper>
       <motion.div
-        className="flex items-center justify-center gap-20 h-screen flex-col my-20"
+        className="flex items-center justify-center gap-20 h-screen flex-col"
         variants={container}
         initial={"hidden"}
         animate={"show"}
