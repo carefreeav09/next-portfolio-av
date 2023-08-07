@@ -111,8 +111,8 @@ const Projects = () => {
           </div>
         </nav>
 
-        <div className="mt-10 grid grid-cols-3 gap-12">
-          <AnimatePresence mode={"sync"}>
+        <div className="mt-10 grid grid-cols-3 gap-6">
+          <AnimatePresence mode={"wait"}>
             {projects
               .filter((p) => p.type === activeTab || activeTab === "all")
               .map((p) => (
@@ -121,16 +121,16 @@ const Projects = () => {
                   layoutId={p.id.toString()}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.8, opacity: 0 }}
+                  // exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ type: "spring" }}
                   key={p.id}
-                  className="flex flex-col justify-between items-start gap-8 p-4 bg-gray-900 rounded-lg shadow-lg"
+                  className="flex flex-col justify-between items-start gap-4 p-4 bg-gray-900 rounded-lg shadow-lg"
                   onClick={() => setSelectedId(p.id)}
                 >
                   <Image
                     src={p.thumbnail}
-                    width={800}
-                    height={800}
+                    width={200}
+                    height={200}
                     alt={`${p.name} alt`}
                     className="w-full h-60"
                   />
@@ -162,17 +162,17 @@ const Projects = () => {
       <AnimatePresence mode={"sync"}>
         {projects && selectedId && (
           <motion.div
+            layout="preserve-aspect"
             layoutId={selectedId.toString()}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: "spring" }}
             key={selectedId}
             className={classNames(
               "absolute top-[10%]  rounded-lg shadow-lg w-1/2",
               getCurrentSelectedProject()?.type === "webapp"
                 ? "w-1/2 left-[25%]"
-                : "w-1/3 left-[33%]"
+                : "w-1/3 left-[35%]"
             )}
           >
             <div className="flex flex-col justify-start items-start gap-4 bg-gray-900">
