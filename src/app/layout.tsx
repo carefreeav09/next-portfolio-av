@@ -136,7 +136,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/contact");
+                    router.push("/blog");
                   }}
                 >
                   <motion.div

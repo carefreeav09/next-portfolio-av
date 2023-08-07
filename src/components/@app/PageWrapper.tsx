@@ -8,7 +8,7 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   return (
     <motion.div
       key={pathname}
-      className="flex-1"
+      className="flex-1 relative"
       initial={{
         opacity: 0,
         y: "-100%",
