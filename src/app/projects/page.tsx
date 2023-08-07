@@ -70,7 +70,7 @@ const Projects = () => {
     <PageWrapper>
       <div
         className={classNames(
-          `min-h-screen h-full w-full py-16 xl:px-40 lg:px-32  md:px-24 px-16 relative`,
+          `min-h-screen h-full w-full py-12 xl:px-40 lg:px-24 md:px-20 px-16 relative`,
           selectedId ? "opacity-40" : "opacity-100"
         )}
         onClick={() => {
@@ -111,20 +111,20 @@ const Projects = () => {
           </div>
         </nav>
 
-        <div className="mt-10 grid grid-cols-3 gap-6">
+        <div className="mt-10 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
           <AnimatePresence mode={"wait"}>
             {projects
               .filter((p) => p.type === activeTab || activeTab === "all")
               .map((p) => (
                 <motion.div
-                  layout
+                  layout="preserve-aspect"
                   layoutId={p.id.toString()}
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   // exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ type: "spring" }}
                   key={p.id}
-                  className="flex flex-col justify-between items-start gap-4 p-4 bg-gray-900 rounded-lg shadow-lg"
+                  className="flex flex-col justify-between items-start gap-4 bg-gray-900 rounded-lg shadow-lg"
                   onClick={() => setSelectedId(p.id)}
                 >
                   <Image
@@ -134,24 +134,26 @@ const Projects = () => {
                     alt={`${p.name} alt`}
                     className="w-full h-60"
                   />
-                  <div className="flex flex-col justify-start items-start gap-2">
-                    <p className="text-xl font-bold tracking-tighter">
-                      {p.name}
-                    </p>
-                    <p className="text-sm font-bold tracking-tighter text-gray-400">
-                      {p.description}
-                    </p>
-                  </div>
+                  <div className="p-4 flex flex-col gap-4">
+                    <div className="flex flex-col justify-start items-start gap-2">
+                      <p className="text-xl font-bold tracking-tighter">
+                        {p.name}
+                      </p>
+                      <p className="text-sm font-bold tracking-tighter text-gray-400">
+                        {p.description}
+                      </p>
+                    </div>
 
-                  <div className="flex justify-start items-center gap-2">
-                    {p.tags.map((t) => (
-                      <div
-                        key={t}
-                        className="px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter"
-                      >
-                        {t}
-                      </div>
-                    ))}
+                    <div className="flex justify-start items-center gap-2 flex-wrap">
+                      {p.tags.map((t) => (
+                        <div
+                          key={t}
+                          className="px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter"
+                        >
+                          {t}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               ))}
