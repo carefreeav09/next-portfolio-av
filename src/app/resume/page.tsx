@@ -155,7 +155,7 @@ const Resume = () => {
           <div className="flex-[0.5] flex justify-center items-center flex-col">
             <Ribbon title="skills" />
 
-            <div className="mt-20 bg-red ">
+            <div className="mt-20 bg-red grid grid-cols-2 gap-x-6">
               <SkillsCircle
                 title={"React/Native"}
                 percentage={90}
