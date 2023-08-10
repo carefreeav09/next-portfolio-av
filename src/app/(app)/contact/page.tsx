@@ -1,7 +1,9 @@
 import PageWrapper from "@/components/@app/PageWrapper";
 import React from "react";
 
-const Contact = () => {
+const Contact = ({ data }: { data: any }) => {
+  //
+  console.log(data, "data");
   return (
     <PageWrapper>
       <div className="h-screen w-10/12 flex justify-between items-center gap-10 m-auto">
@@ -69,3 +71,14 @@ const Contact = () => {
 };
 
 export default Contact;
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(process.env.API_URL + "/projects");
+  const data = await res.json();
+
+  console.log(res, data, process.env.API_URL, "data in server");
+
+  // Pass data to the page via props
+  return { props: { data } };
+}

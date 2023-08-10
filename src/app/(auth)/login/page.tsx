@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
 
-const Login = () => {
-  return <div>Login</div>;
+const Login = (props: any) => {
+  return <>asdsad</>;
 };
 
 export default Login;
