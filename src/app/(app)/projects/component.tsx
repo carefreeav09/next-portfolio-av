@@ -66,7 +66,7 @@ const ProjectsComponent = ({ projects }: { projects: IProject[] }) => {
         </nav>
 
         <div className="mt-10 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-          <AnimatePresence mode={"popLayout"}>
+          <AnimatePresence mode={"sync"}>
             {projects
               .filter((p) => p.appType === activeTab || activeTab === "all")
               .map((p) => (
@@ -140,7 +140,7 @@ const ProjectsComponent = ({ projects }: { projects: IProject[] }) => {
                 className={
                   getCurrentSelectedProject()?.appType === "webapp"
                     ? "w-full h-full"
-                    : "w-60 m-auto"
+                    : "w-full m-auto"
                 }
               />
               <div className="p-6 flex flex-col gap-4">

@@ -11,7 +11,11 @@ const Projects = async () => {
 export default Projects;
 
 async function getProjectsData() {
-  const res = await fetch(process.env.API_URL + "/api/v1/projects");
+  const res = await fetch(process.env.API_URL + "/api/v1/projects", {
+    next: {
+      revalidate: 1, // in minutes
+    },
+  });
 
   const resObject = await res.json();
 
