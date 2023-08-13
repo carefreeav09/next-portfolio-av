@@ -17,10 +17,6 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => {
         opacity: 1,
         y: 0,
       }}
-      exit={{
-        opacity: 0,
-        y: "100%",
-      }}
       transition={{
         ease: "easeOut",
         duration: 0.5,
