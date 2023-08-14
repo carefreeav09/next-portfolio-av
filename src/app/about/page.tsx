@@ -270,5 +270,3 @@ const About = () => {
 };
 
 export default About;
-
-//  commit only to commit -< going out of house today canot work.
