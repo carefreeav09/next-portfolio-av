@@ -8,6 +8,7 @@ const Login = async (props: any) => {
   const session = await getServerSession();
   return (
     <div
+      // too lazy to convert this to tailwind class. funny story
       style={{
         height: "100vh",
         display: "flex",

@@ -6,13 +6,7 @@ const SignUpButton = ({ session, title }: { session: any; title: string }) => {
   return (
     <button
       onClick={() => (session ? signOut() : signIn())}
-      style={{
-        padding: "16px 24px",
-        borderRadius: 8,
-        background: "#4f46e5",
-        color: "white",
-        cursor: "pointer",
-      }}
+      className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
     >
       {title}
     </button>
