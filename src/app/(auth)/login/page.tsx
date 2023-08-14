@@ -1,26 +1,27 @@
 import { getServerSession } from "next-auth";
-import { signIn, signOut } from "next-auth/react";
+
 import React from "react";
 
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import SignUpButton from "./@form";
 
 const Login = async (props: any) => {
-  const session = await getServerSession(authOptions);
-
-  console.log(session, "session");
-  if (session && session.user) {
-    return (
-      <>
-        Signed in as {session.user.email} <br />
-        {/* <button onClick={() => signOut()}>Sign out</button> */}
-      </>
-    );
-  }
+  const session = await getServerSession();
   return (
-    <>
-      Not signed in <br />
-      {/* <button onClick={() => signIn()}>Sign in</button> */}
-    </>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        background: "black",
+        overflow: "none",
+      }}
+    >
+      <SignUpButton
+        session={session}
+        title={session && session.user ? "Sign out" : "Sign In"}
+      />
+    </div>
   );
 };
 

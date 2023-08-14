@@ -9,7 +9,13 @@ export default function RootLayout({
         <title>Carefreeav</title>
       </head>
 
-      <body>{children}</body>
+      <body
+        style={{
+          margin: 0,
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
