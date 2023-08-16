@@ -1,8 +1,9 @@
+"use client";
 import "../globals.css";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import router from "next/router";
+// import router from "next/navigation";
 import { BsPostcard } from "react-icons/bs";
 import {
   HiHome,
@@ -44,7 +45,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/main");
+                    // router("/main");
                   }}
                 >
                   <motion.div
@@ -62,7 +63,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/about");
+                    // router.push("/about");
                   }}
                 >
                   <motion.div
@@ -80,7 +81,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/resume");
+                    // router.push("/resume");
                   }}
                 >
                   <motion.div
@@ -98,7 +99,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/projects");
+                    // router.push("/projects");
                   }}
                 >
                   <motion.div
@@ -116,7 +117,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/blog");
+                    // router.push("/blog");
                   }}
                 >
                   <motion.div
@@ -134,7 +135,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    router.push("/contact");
+                    // router.push("/contact");
                   }}
                 >
                   <motion.div
