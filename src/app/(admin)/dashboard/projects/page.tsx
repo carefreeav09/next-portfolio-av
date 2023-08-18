@@ -1,53 +1,23 @@
 import React from "react";
+import ProjectsListComponent from "./component";
 
-// Tanstack table
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+const page = async () => {
+  const data = await getProjectsData();
 
-//
-import { MdInfo, MdNotes } from "react-icons/md";
-
-//
-import { IProject } from "@/types/projects.types";
-
-const columnHelper = createColumnHelper<IProject>();
-
-const columns = [
-  columnHelper.accessor("name", {
-    cell: (info) => info.getValue(),
-    header: () => <span> Project Name </span>,
-  }),
-  columnHelper.accessor("appType", {
-    cell: (info) => info.getValue(),
-    header: () => <span> App Type </span>,
-  }),
-  columnHelper.accessor("freelance", {
-    cell: (info) => (info.getValue() ? "True" : "False"),
-    header: "Is Freelance",
-  }),
-  columnHelper.accessor("_id", {
-    cell: (info) => (
-      <div>
-        <button
-          className="bg-indigo-800 text-white"
-          onClick={() => {
-            console.log(info);
-          }}
-        >
-          <MdNotes />
-        </button>
-      </div>
-    ),
-    header: "Actions",
-  }),
-];
-
-const page = () => {
-  return <div>page</div>;
+  return <ProjectsListComponent projects={data} />;
 };
 
 export default page;
+
+async function getProjectsData() {
+  const res = await fetch(process.env.API_URL + "/api/v1/projects", {
+    next: {
+      revalidate: 1, // in minutes
+    },
+  });
+
+  const resObject = await res.json();
+  return resObject.data;
+}
+
+// this component is redundant to the one at the app/ directory. fix it .
