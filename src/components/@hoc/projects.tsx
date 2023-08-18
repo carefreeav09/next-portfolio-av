@@ -1,12 +1,13 @@
 import React from "react";
-import ProjectsComponent from "./component";
 
 const ProjectsWrapper = async ({ children }: { children: any }) => {
   //
   const data = await getProjectsData();
 
   //
-  return <ProjectsComponent projects={data} />;
+  return React.cloneElement(children, {
+    projects: data,
+  });
 };
 
 export default ProjectsWrapper;
@@ -21,3 +22,5 @@ async function getProjectsData() {
   const resObject = await res.json();
   return resObject.data;
 }
+
+// this is useless for now.
