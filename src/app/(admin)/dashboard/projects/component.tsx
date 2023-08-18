@@ -9,6 +9,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
+  getPaginationRowModel,
 } from "@tanstack/react-table";
 import { MdEditNote } from "react-icons/md";
 
@@ -56,6 +57,8 @@ const ProjectsListComponent = ({ projects }: { projects: IProject[] }) => {
     data: projects,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    // this handles pagination
+    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (
@@ -83,7 +86,7 @@ const ProjectsListComponent = ({ projects }: { projects: IProject[] }) => {
         </div>
 
         {/*  */}
-        <table className="w-full text-center overflow-x-auto text-lg bg-slate-900">
+        <table className="w-full text-center overflow-x-auto text-lg bg-slate-900 rounded-md">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
