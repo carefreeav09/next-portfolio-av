@@ -19,5 +19,6 @@ async function getProjectsData() {
 
   const resObject = await res.json();
 
+  console.log(resObject.data, "res object data");
   return resObject.data;
 }

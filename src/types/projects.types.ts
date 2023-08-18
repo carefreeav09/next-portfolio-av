@@ -7,6 +7,6 @@ export interface IProject {
     images: string[];
     url: string;
     github: string;
-    _id: number,
     appType: string
+    _id: number,
 }

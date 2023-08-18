@@ -6,7 +6,7 @@ import React from "react";
 import { Gi3DGlasses } from "react-icons/gi";
 
 import Image from "next/image";
-import { IProject } from "./types";
+import { IProject } from "../../../types/projects.types";
 
 const ProjectsComponent = ({ projects }: { projects: IProject[] }) => {
   //
@@ -137,11 +137,12 @@ const ProjectsComponent = ({ projects }: { projects: IProject[] }) => {
                 width={1800}
                 height={900}
                 alt={`alt`}
-                className={
+                className={classNames(
+                  "object-cover",
                   getCurrentSelectedProject()?.appType === "webapp"
-                    ? "w-full h-full"
-                    : "w-full m-auto"
-                }
+                    ? "w-full max-h-[400px]"
+                    : "w-full m-auto max-h-[500px]"
+                )}
               />
               <div className="p-6 flex flex-col gap-4">
                 <div className="flex justify-start items-center gap-2">
