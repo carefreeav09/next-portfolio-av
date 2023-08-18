@@ -54,52 +54,18 @@ export default function RootLayout({
                       scale: 0.9,
                     }}
                   >
-                    <HiHome style={iconStyles} />
+                    <MdOutlineDashboard style={iconStyles} />
                   </motion.div>
 
-                  <p>Home</p>
+                  <p>Dashboard</p>
                 </div>
+              </div>
 
+              <div className="mt-10 flex flex-col gap-10">
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    // router.push("/about");
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.5 }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <HiOutlineUser style={iconStyles} />
-                  </motion.div>
-
-                  <p>Know Me</p>
-                </div>
-
-                <div
-                  className="flex items-center justify-center flex-col cursor-pointer"
-                  onClick={() => {
-                    // router.push("/resume");
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.5 }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <HiOutlineDocumentText style={iconStyles} />
-                  </motion.div>
-
-                  <p>Resume</p>
-                </div>
-
-                <div
-                  className="flex items-center justify-center flex-col cursor-pointer"
-                  onClick={() => {
-                    // router.push("/projects");
+                    // router("/main");
                   }}
                 >
                   <motion.div
@@ -112,42 +78,6 @@ export default function RootLayout({
                   </motion.div>
 
                   <p>Projects</p>
-                </div>
-
-                <div
-                  className="flex items-center justify-center flex-col cursor-pointer"
-                  onClick={() => {
-                    // router.push("/blog");
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.5 }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <BsPostcard style={iconStyles} />
-                  </motion.div>
-
-                  <p>Blog</p>
-                </div>
-
-                <div
-                  className="flex items-center justify-center flex-col cursor-pointer"
-                  onClick={() => {
-                    // router.push("/contact");
-                  }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.5 }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <HiOutlinePhone style={iconStyles} />
-                  </motion.div>
-
-                  <p>Contact</p>
                 </div>
               </div>
             </section>
