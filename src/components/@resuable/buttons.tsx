@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { MouseEventHandler, PropsWithChildren, ReactNode } from "react";
+import { MouseEventHandler, PropsWithChildren } from "react";
 
 //
 type ButtonType = "button" | "submit";
@@ -15,9 +15,6 @@ interface IButtonProps {
   size?: ButtonSize;
   htmlType?: ButtonType;
   variant?: ButtonVariant;
-  //
-  preIcon?: ReactNode;
-  postIcon?: ReactNode;
   //
   disabled?: boolean;
   block?: boolean;
@@ -63,11 +60,7 @@ export default function Button(props: PropsWithChildren<IButtonProps>) {
       onClick={props.onClick}
       type={htmlType}
     >
-      {props.preIcon && <div className="flex-grow-0">{props.preIcon}</div>}
-
       {props.children}
-
-      {props.postIcon && <div className="flex-grow-0">{props.postIcon}</div>}
     </button>
   );
 }

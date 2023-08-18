@@ -78,16 +78,22 @@ const ProjectsComponent = ({ projects }: { projects: IProject[] }) => {
                   // exit={{ scale: 0.8, opacity: 0 }}
                   transition={{ type: "spring" }}
                   key={p._id}
-                  className="flex flex-col justify-between items-start gap-4 bg-gray-900 rounded-lg shadow-lg"
+                  className="flex flex-col justify-between items-start gap-4 bg-gray-900 rounded-lg shadow-lg "
                   onClick={() => setSelectedId(p._id)}
+                  whileHover={{
+                    translateY: -10,
+                    boxShadow: "#111827 0px 7px 20px 0px",
+                  }}
                 >
-                  <Image
-                    src={p.thumbnail}
-                    width={200}
-                    height={200}
-                    alt={`${p.name} alt`}
-                    className="w-full h-60"
-                  />
+                  <div className="h-60 w-full overflow-hidden">
+                    <Image
+                      src={p.thumbnail}
+                      width={200}
+                      height={200}
+                      alt={`${p.name} alt`}
+                      className="h-[inherit] w-[inherit] object-cover scale-100 hover:transition-transform hover:scale-110 duration-1000 ease-in-out"
+                    />
+                  </div>
                   <div className="p-4 flex flex-col gap-4">
                     <div className="flex flex-col justify-start items-start gap-2">
                       <p className="text-xl font-bold tracking-tighter">
