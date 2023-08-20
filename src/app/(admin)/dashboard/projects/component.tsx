@@ -11,7 +11,7 @@ import {
   useReactTable,
   getPaginationRowModel,
 } from "@tanstack/react-table";
-import { MdEditNote } from "react-icons/md";
+import { MdEditNote, MdDelete } from "react-icons/md";
 
 //
 import PageWrapper from "@/components/@app/PageWrapper";
@@ -35,14 +35,23 @@ const columns = [
   }),
   columnHelper.accessor("_id", {
     cell: (info) => (
-      <div>
+      <div className="flex gap-2 justify-center">
         <button
-          className="bg-indigo-800 text-white"
+          className=" text-white hover:text-indigo-800"
           onClick={() => {
             console.log(info.row && info.row.id);
           }}
         >
           <MdEditNote />
+        </button>
+
+        <button
+          className=" text-white hover:text-indigo-800"
+          onClick={() => {
+            console.log(info.row && info.row.id);
+          }}
+        >
+          <MdDelete />
         </button>
       </div>
     ),
