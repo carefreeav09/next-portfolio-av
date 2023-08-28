@@ -32,9 +32,7 @@ export default function RootLayout({
 }) {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname, "pathname");
   //
-  const [activeTab, setActiveTab] = useState("main");
 
   return (
     <html lang="en">

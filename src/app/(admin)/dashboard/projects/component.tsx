@@ -39,7 +39,7 @@ const columns = [
         <button
           className=" text-white hover:text-indigo-800"
           onClick={() => {
-            console.log(info.row && info.row.id);
+            //
           }}
         >
           <MdEditNote />
