@@ -17,7 +17,7 @@ const Container: React.FC<IContainerProps> = (props: IContainerProps) => {
       className={classNames(
         width && "w-10/12",
         "mx-auto",
-        padding ?? "p-6",
+        padding ?? "p-12",
         extraClasses
       )}
     >
