@@ -1,10 +1,16 @@
 import React from "react";
 
-const TimelineBanner: React.FC<{
+//
+interface ITimelineBannerProps {
   startDate: string;
   endDate?: string;
   current?: boolean;
-}> = ({ startDate, endDate, current }) => {
+}
+
+const TimelineBanner: React.FC<ITimelineBannerProps> = (props) => {
+  const { startDate, endDate, current } = props;
+
+  //
   return (
     <div className="relative w-40">
       <svg

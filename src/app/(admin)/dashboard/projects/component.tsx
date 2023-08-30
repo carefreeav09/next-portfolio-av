@@ -17,6 +17,7 @@ import { MdEditNote, MdDelete } from "react-icons/md";
 import PageWrapper from "@/components/@app/PageWrapper";
 import Breadcrumbs from "@/components/@resuable/breadcrumbs";
 import Button from "@/components/@resuable/buttons";
+import { useRouter } from "next/navigation";
 
 const columnHelper = createColumnHelper<IProject>();
 
@@ -61,6 +62,7 @@ const columns = [
 
 //
 const ProjectsListComponent = ({ projects }: { projects: IProject[] }) => {
+  const router = useRouter();
   //
   const table = useReactTable({
     data: projects,
@@ -89,7 +91,15 @@ const ProjectsListComponent = ({ projects }: { projects: IProject[] }) => {
         <div className="flex justify-between pb-10">
           <p className="text-2xl font-bold tracking-widest">Projects List</p>
 
-          <Button size="medium" variant="indigo-800" className="rounded-md">
+          <Button
+            size="medium"
+            variant="indigo-800"
+            className="rounded-md"
+            onClick={() => {
+              //
+              router.push("/dashboard/projects/create");
+            }}
+          >
             <p className="font-bold">Create new projects</p>
           </Button>
         </div>
