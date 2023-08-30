@@ -2,6 +2,7 @@
 
 import PageWrapper from "@/components/@app/PageWrapper";
 import { Breadcrumbs, Container } from "@/components/@resuable";
+import Input from "@/components/@resuable/input";
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -40,10 +41,26 @@ const CreateProjects = () => {
         <div className="my-10 py-8">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-8">
-              <input
-                defaultValue="test"
-                {...register("example")}
-                className="h-10 w-full"
+              <Input
+                name={"name"}
+                label="Project Name"
+                register={register}
+                rules={{
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 4,
+                    message: "Min length is 4",
+                  },
+                  pattern: {
+                    value: /^[A-Za-z]+$/i,
+                    message: "Only alphabets are allowed",
+                  },
+                }}
+                required
+                errors={errors}
               />
 
               <div>
