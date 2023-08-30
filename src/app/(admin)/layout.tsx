@@ -3,14 +3,8 @@ import "../globals.css";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 // import router from "next/navigation";
-import { BsPostcard } from "react-icons/bs";
-import {
-  HiHome,
-  HiOutlineUser,
-  HiOutlineDocumentText,
-  HiOutlinePhone,
-} from "react-icons/hi";
 import { MdOutlineDashboard } from "react-icons/md";
 
 export default function RootLayout({
@@ -18,6 +12,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+
   return (
     <html lang="en">
       <head>
@@ -65,7 +61,7 @@ export default function RootLayout({
                 <div
                   className="flex items-center justify-center flex-col cursor-pointer"
                   onClick={() => {
-                    // router("/main");
+                    router.push("dashboard/projects");
                   }}
                 >
                   <motion.div
