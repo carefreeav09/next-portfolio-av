@@ -57,7 +57,11 @@ const Input: React.FC<IInputProps> = (props) => {
         type={type}
         disabled={disabled}
         placeholder={placeholder}
-        className={classNames("h-10 w-full text-black", inputClasses ?? "")}
+        className={classNames(
+          "h-10 w-full text-black px-2",
+          "hover:outline-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 rounded-md focus:shadow-md focus:shadow-gray-700",
+          inputClasses ?? ""
+        )}
         // if register fn exists
         {...(register && {
           ...register?.(name, {
@@ -72,9 +76,9 @@ const Input: React.FC<IInputProps> = (props) => {
         {...(onChange && { onChange: onChange })}
       />
 
-      {errors[name] && (
+      {errors && errors[name] && (
         <div className="text-red-400 font-bold my-2 text-sm tracking-tighter">
-          {errors[name].message}
+          <p>{errors?.[name]?.message as string}</p>
         </div>
       )}
     </div>

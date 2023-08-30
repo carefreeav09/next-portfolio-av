@@ -54,22 +54,28 @@ const CreateProjects = () => {
                     value: 4,
                     message: "Min length is 4",
                   },
-                  pattern: {
-                    value: /^[A-Za-z]+$/i,
-                    message: "Only alphabets are allowed",
-                  },
                 }}
                 required
                 errors={errors}
               />
 
-              <div>
-                <input
-                  {...register("exampleRequired", { required: true })}
-                  className="h-10 w-full"
-                />
-                {errors.exampleRequired && <span>This field is required</span>}
-              </div>
+              <Input
+                name={"name"}
+                label="Project Name"
+                register={register}
+                rules={{
+                  maxLength: {
+                    value: 20,
+                    message: "Max length is 20",
+                  },
+                  minLength: {
+                    value: 4,
+                    message: "Min length is 4",
+                  },
+                }}
+                required
+                errors={errors}
+              />
 
               <input type="submit" />
             </div>
