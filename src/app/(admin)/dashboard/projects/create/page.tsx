@@ -43,7 +43,7 @@ const CreateProjects = () => {
 
         <div className="my-10 py-8">
           <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <div className="grid grid-cols-2 gap-8 items-center">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-4 items-center">
               <Input
                 name={"name"}
                 label="Project Name"
@@ -82,7 +82,7 @@ const CreateProjects = () => {
                 onChange={(value) => setSelected(value as string)}
               />
 
-              <Checkbox />
+              <Checkbox label="label" />
             </div>
 
             <Button

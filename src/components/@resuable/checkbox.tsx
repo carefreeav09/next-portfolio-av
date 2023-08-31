@@ -1,15 +1,28 @@
 import classNames from "classnames";
 import React from "react";
+import { UseFormReturn, FieldValues } from "react-hook-form";
 import { MdCheck } from "react-icons/md";
 
 interface ICheckboxProps {
+  label: string;
+  name?: string;
+  formMethods?: UseFormReturn<FieldValues, any, undefined>;
+  checked?: boolean;
+  setChecked?: (value: boolean) => void;
   size?: number;
-  customIcons?: SVGElement;
   labelClasses?: string;
   wrapperClasses?: string;
 }
 
 const Checkbox: React.FC<ICheckboxProps> = (props) => {
+  //
+
+  const iconClasses = classNames(
+    "absolute pointer-events-none stroke-white fill-none peer-checked:!fill-white",
+    props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`,
+    "border border-indigo-800 rounded-sm"
+  );
+
   return (
     <div
       className={classNames(
@@ -26,15 +39,16 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
         id="checkbox"
       />
 
-      <MdCheck
+      <MdCheck className={iconClasses} />
+
+      <label
+        htmlFor={`checkbox`}
         className={classNames(
-          "absolute pointer-events-none stroke-white fill-none peer-checked:!fill-white",
-          props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`,
-          "border border-indigo-800 rounded-sm"
+          props.labelClasses ?? "",
+          "text-white cursor-pointer"
         )}
-      />
-      <label htmlFor={`checkbox`} className="cursor-pointer">
-        Label
+      >
+        {props.label}
       </label>
     </div>
   );
