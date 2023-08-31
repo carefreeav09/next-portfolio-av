@@ -15,13 +15,14 @@ interface ISelectComponentProps {
   name: string;
   value?: string | number | boolean;
   onChange?: (value: string | number | boolean) => void;
+  label?: string;
+  placeholder?: string;
 }
 
 interface ISelectWrapperProps extends ISelectComponentProps {
   name: string;
   formMethods?: UseFormReturn<FieldValues, any, undefined>;
   required?: boolean;
-  label?: string;
   labelClasses?: string;
   wrapperClasses?: string;
   rules?: any;
@@ -37,6 +38,9 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
     label,
     required,
     rules,
+    value,
+    onChange,
+    placeholder,
   } = props;
   return (
     <div className={classNames(wrapperClasses ?? "")}>
@@ -62,7 +66,10 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
               ...rules,
             }}
             render={({ field: { value, onChange } }) => (
-              <SelectComponent {...{ value, onChange, options, name }} />
+              <SelectComponent
+                {...{ value, onChange, options, name }}
+                placeholder={placeholder ? placeholder : label ?? ""}
+              />
             )}
           />
 
@@ -75,14 +82,12 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
         </>
       ) : (
         <>
-          {" "}
           <SelectComponent
-            value={"extends"}
-            onChange={() => {
-              //
-            }}
+            value={value}
+            onChange={onChange}
             options={options}
             name={name}
+            placeholder={placeholder ? placeholder : label ?? ""}
           />
         </>
       )}
@@ -92,14 +97,23 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
 
 export default Select;
 
-const SelectComponent = (props: ISelectComponentProps) => {
-  const { value, onChange, options } = props;
+//
+const SelectComponent: React.FC<ISelectComponentProps> = (props) => {
+  const { value, onChange, options, placeholder, label } = props;
+
+  console.log(value, "value");
   return (
     <Listbox value={value} onChange={onChange}>
       <div className="relative mt-1">
         <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
           <span className="block truncate text-black">
-            {typeof value === "boolean" ? (value ? "True" : "False ") : value}
+            {typeof value === "boolean"
+              ? value
+                ? "True"
+                : "False "
+              : value
+              ? value
+              : placeholder ?? label ?? ""}
           </span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <BsChevronBarUp

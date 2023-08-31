@@ -33,7 +33,7 @@ const CreateProjects = () => {
   const onSubmit = (data: any) => console.log(data);
 
   //
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState<string>();
 
   return (
     <PageWrapper>
@@ -63,6 +63,7 @@ const CreateProjects = () => {
 
               <Select
                 label={"Select"}
+                placeholder={"Select"}
                 options={[
                   {
                     label: "True",
@@ -76,6 +77,8 @@ const CreateProjects = () => {
                 // formMethods={methods}
                 name="select"
                 required
+                value={selected}
+                onChange={(value) => setSelected(value as string)}
               />
             </div>
 
