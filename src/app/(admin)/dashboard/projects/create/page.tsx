@@ -7,6 +7,7 @@ import PageWrapper from "@/components/@app/PageWrapper";
 import {
   Breadcrumbs,
   Button,
+  Checkbox,
   Container,
   Input,
   Select,
@@ -80,6 +81,8 @@ const CreateProjects = () => {
                 value={selected}
                 onChange={(value) => setSelected(value as string)}
               />
+
+              <Checkbox />
             </div>
 
             <Button
