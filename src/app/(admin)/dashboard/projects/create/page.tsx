@@ -1,23 +1,16 @@
 "use client";
 
-import PageWrapper from "@/components/@app/PageWrapper";
-import { Breadcrumbs, Button, Container } from "@/components/@resuable";
-import Input from "@/components/@resuable/input";
-import Select from "@/components/@resuable/select";
-import { Listbox, Transition } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { BsChevronBarUp, BsCheck } from "react-icons/bs";
-
-//
-const people = [
-  { id: 1, name: "Durward Reynolds", unavailable: false },
-  { id: 2, name: "Kenton Towne", unavailable: false },
-  { id: 3, name: "Therese Wunsch", unavailable: false },
-  { id: 4, name: "Benedict Kessler", unavailable: true },
-  { id: 5, name: "Katelyn Rohan", unavailable: false },
-];
+import PageWrapper from "@/components/@app/PageWrapper";
+import {
+  Breadcrumbs,
+  Button,
+  Container,
+  Input,
+  Select,
+} from "@/components/@resuable";
 
 //
 const crumbs = [
@@ -36,18 +29,11 @@ const crumbs = [
 ];
 
 const CreateProjects = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const methods = useForm();
   const onSubmit = (data: any) => console.log(data);
 
   //
-  const [selected, setSelected] = useState(people[0]);
-
-  console.log(watch("example")); // watch input value by passing the name of it
+  const [selected, setSelected] = useState();
 
   return (
     <PageWrapper>
@@ -55,12 +41,12 @@ const CreateProjects = () => {
         <Breadcrumbs crumbs={crumbs} />
 
         <div className="my-10 py-8">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
             <div className="grid grid-cols-2 gap-8 items-center">
               <Input
                 name={"name"}
                 label="Project Name"
-                register={register}
+                register={methods.register}
                 rules={{
                   maxLength: {
                     value: 20,
@@ -72,10 +58,11 @@ const CreateProjects = () => {
                   },
                 }}
                 required
-                errors={errors}
+                errors={methods.formState.errors}
               />
 
-              {/* <Select
+              <Select
+                label={"Select"}
                 options={[
                   {
                     label: "True",
@@ -86,9 +73,10 @@ const CreateProjects = () => {
                     value: false,
                   },
                 ]}
-                register={register}
+                // formMethods={methods}
                 name="select"
-              /> */}
+                required
+              />
             </div>
 
             <Button
