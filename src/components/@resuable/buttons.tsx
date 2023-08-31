@@ -21,6 +21,7 @@ interface IButtonProps {
   //
   onClick?: MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  rounded?: string;
 }
 
 /**
@@ -49,6 +50,7 @@ export default function Button(props: PropsWithChildren<IButtonProps>) {
           "gap-1 uppercase underline": variant === "link",
           "cursor-not-allowed": props.disabled,
         },
+        props.rounded ?? "rounded-md",
         {
           "h-9": size === "small",
           "h-11": size === "medium",
