@@ -83,7 +83,7 @@ const CreateProjects = () => {
                 onChange={(value) => setSelected(value as string)}
               />
 
-              <Checkbox label="label" />
+              <Checkbox label="label" labelClasses="text-lg" />
             </div>
 
             <Button

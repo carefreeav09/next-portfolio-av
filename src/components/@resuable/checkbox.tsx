@@ -59,7 +59,7 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
         htmlFor={`checkbox`}
         className={classNames(
           props.labelClasses ?? "",
-          "text-white cursor-pointer"
+          "text-gray-400 text-lg font-semibold cursor-pointer"
         )}
       >
         {props.label}

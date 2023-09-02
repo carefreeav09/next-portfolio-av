@@ -18,7 +18,7 @@ const Timeline: React.FC<{
   return (
     <React.Fragment>
       <div className="flex">
-        <div className="-ml-3.5 bg-gray-900 h-6 w-6 rounded-full" />
+        <div className="-ml-3.5 bg-secondary h-6 w-6 rounded-full" />
         <div className="-mt-[3px] ml-1">
           <TimelineBanner
             startDate={startDate}

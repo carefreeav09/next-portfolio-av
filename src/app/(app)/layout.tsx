@@ -41,7 +41,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <div className="flex items-stretch justify-start min-h-screen h-full">
-          <nav className="flex-[0.1] bg-gray-900 text-white flex items-between flex-col justify-between">
+          <nav className="flex-[0.1] bg-navbar text-white flex items-between flex-col justify-between">
             <section>
               <Image
                 priority
@@ -52,7 +52,7 @@ export default function RootLayout({
                 className="w-full h-30"
               />
 
-              <p className="bg-indigo-700 w-full text-center font-bold p-2 shadow-md shadow-indigo-900">
+              <p className="bg-secondary w-full text-center font-bold p-2 shadow-md shadow-indigo-900">
                 Aabhushan
               </p>
 

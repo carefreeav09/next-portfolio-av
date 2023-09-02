@@ -48,7 +48,7 @@ const About = () => {
                 className="h-16 w-16 cursor-pointer"
               />
             </motion.div>
-            <p className="font-bold text-2xl tracking-tighter">Fullstack</p>
+            <p className="font-semibold text-2xl  text-tertiary">Fullstack</p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
               Build fullstack applications using React/NextJS and Node/Express
@@ -73,7 +73,9 @@ const About = () => {
                 className="h-16 w-16 cursor-pointer"
               />
             </motion.div>
-            <p className="font-bold text-2xl tracking-tighter">React Native</p>
+            <p className="font-semibold text-2xl  text-tertiary">
+              React Native
+            </p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
               Create hybrid mobile applications for Android and IOS using React
@@ -99,7 +101,7 @@ const About = () => {
                 className="h-16 w-16 cursor-pointer"
               />
             </motion.div>
-            <p className="font-bold text-2xl tracking-tighter">
+            <p className="font-semibold text-2xl  text-tertiary">
               Google Scripts
             </p>
 
@@ -127,7 +129,7 @@ const About = () => {
                 className="h-16 w-16 cursor-pointer"
               />
             </motion.div>
-            <p className="font-bold text-2xl tracking-tighter">Wordpress</p>
+            <p className="font-semibold text-2xl  text-tertiary">Wordpress</p>
 
             <p className="max-w-[180px] text-center text-gray-600 text-base font-semibold tracking-wide">
               Build custom plugins using gutenberg blocks and create beautiful

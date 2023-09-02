@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <PageWrapper>
-      <div className="h-screen w-10/12 flex justify-between items-center gap-10 m-auto md:flex-col xl:flex-row">
+      <div className="h-screen w-11/12 flex justify-between items-center gap-10 m-auto flex-col md:flex-row">
         <div className="">
           <p className="text-xl tracking-tight text-gray-500 mb-0">
             have an idea in mind?
@@ -80,7 +80,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="p-4 bg-indigo-800 text-white rounded-lg hover:bg-indigo-600 font-bold shadow-md shadow-indigo-600"
+                className="p-4 bg-secondary text-white rounded-lg hover:bg-secondary font-bold shadow-md shadow-secondary"
               >
                 Lets connect
               </button>
@@ -101,7 +101,7 @@ const Contact = () => {
             </GoogleMapReact>
           </div>
 
-          <div className="grid grid-cols-2 my-8 text-center gap-4">
+          <div className="grid xl:grid-cols-2 my-8 text-center gap-4 grid-cols-1">
             <div className="w-full rounded-md p-4 flex items-center gap-4 bg-gray-900 justify-center">
               <div className="text-red-400 text-2xl">
                 <HiPhoneIncoming />
@@ -123,7 +123,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex flex-col xl:flex-row justify-center items-center gap-10">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-10">
             <motion.div
               className="text-blue-400 text-3xl cursor-pointer"
               whileHover={{

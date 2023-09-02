@@ -19,13 +19,13 @@ const TimelineBanner: React.FC<ITimelineBannerProps> = (props) => {
         style={{
           transform: "rotate(180deg)",
         }}
-        className=" absolute -left-5 text-gray-900"
+        className=" absolute -left-5 text-secondary"
       >
         <polygon points="15,0 0,0 0,15" fill="currentColor" />
         <polygon points="0,15 0,30 15,30" fill="currentColor" />
       </svg>
 
-      <div className="absolute bg-gray-900 w-40 h-10 left-3 right-5 flex items-center justify-start top-0 text-sm font-bolder pl-4 -mt-1">
+      <div className="absolute bg-secondary w-40 h-10 left-3 right-5 flex items-center justify-start top-0 text-sm font-bolder pl-4 -mt-1">
         {startDate} {current || endDate ? "-" : ""}{" "}
         {current ? "Current" : endDate ?? ""}
       </div>
