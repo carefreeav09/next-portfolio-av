@@ -8,13 +8,16 @@ interface ICheckboxProps {
   name?: string;
   formMethods?: UseFormReturn<FieldValues, any, undefined>;
   checked?: boolean;
-  setChecked?: (value: boolean) => void;
+  setChecked?: (value: React.ChangeEvent<HTMLInputElement>) => void;
   size?: number;
   labelClasses?: string;
   wrapperClasses?: string;
+  required?: boolean;
+  rules?: any;
 }
 
 const Checkbox: React.FC<ICheckboxProps> = (props) => {
+  const { formMethods, name, required, label, rules, setChecked } = props;
   //
 
   const iconClasses = classNames(
@@ -32,15 +35,26 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
     >
       <input
         type="checkbox"
+        checked={props.checked}
         className={classNames(
           "peer relative appearance-none shrink-0",
           props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`
         )}
         id="checkbox"
+        {...(formMethods && {
+          ...formMethods.register?.(name as string, {
+            required: {
+              value: required,
+              message: `${label} is required`,
+            },
+            ...rules,
+          }),
+        })}
+        // // if register doesn't exist
+        {...(setChecked && { onChange: setChecked })}
       />
 
       <MdCheck className={iconClasses} />
-
       <label
         htmlFor={`checkbox`}
         className={classNames(

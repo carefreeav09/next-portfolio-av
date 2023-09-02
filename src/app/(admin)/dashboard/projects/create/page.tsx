@@ -35,6 +35,7 @@ const CreateProjects = () => {
 
   //
   const [selected, setSelected] = useState<string>();
+  const [checked, setChecked] = useState<boolean>(true);
 
   return (
     <PageWrapper>
