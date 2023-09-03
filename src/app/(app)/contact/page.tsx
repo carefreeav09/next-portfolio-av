@@ -80,7 +80,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="p-4 bg-secondary text-white rounded-lg hover:bg-secondary font-bold shadow-md shadow-secondary"
+                className="p-4 bg-secondary text-white rounded-lg hover:bg-secondary font-bold shadow-md shadow-secondary transition hover:translate-y-[2px]"
               >
                 Lets connect
               </button>
@@ -125,7 +125,7 @@ const Contact = () => {
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-10">
             <motion.div
-              className="text-blue-400 text-3xl cursor-pointer"
+              className="text-tertiary text-3xl cursor-pointer"
               whileHover={{
                 scale: 1.2,
                 rotate: 360,
@@ -135,7 +135,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="text-white-400 text-3xl cursor-pointer"
+              className="text-tertiary text-3xl cursor-pointer"
               whileHover={{
                 scale: 1.2,
                 rotate: 360,
@@ -145,7 +145,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="text-blue-400 text-3xl cursor-pointer"
+              className="text-tertiary text-3xl cursor-pointer"
               whileHover={{
                 scale: 1.2,
                 rotate: 360,
@@ -155,7 +155,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="text-white-400 text-3xl cursor-pointer"
+              className="text-tertiary text-3xl cursor-pointer"
               whileHover={{
                 scale: 1.2,
                 rotate: 360,
@@ -165,7 +165,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.div
-              className="text-blue-400 text-3xl cursor-pointer"
+              className="text-tertiary text-3xl cursor-pointer"
               whileHover={{
                 scale: 1.2,
                 rotate: 360,
