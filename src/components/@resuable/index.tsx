@@ -6,6 +6,7 @@ import TimelineBanner from "./timeline-banner";
 import Input from "./input";
 import Select from "./select";
 import Checkbox from "./checkbox";
+import Upload from "./upload";
 
 export {
   Breadcrumbs,
@@ -16,4 +17,5 @@ export {
   Input,
   Select,
   Checkbox,
+  Upload,
 };
