@@ -40,7 +40,6 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
           "peer relative appearance-none shrink-0",
           props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`
         )}
-        id="checkbox"
         {...(formMethods && {
           ...formMethods.register?.(name as string, {
             required: {

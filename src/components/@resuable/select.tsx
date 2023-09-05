@@ -75,11 +75,6 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
               />
             )}
           />
-
-          {console.log(
-            formMethods.formState.errors,
-            "errors inside the seelct"
-          )}
           {formMethods.formState.errors &&
             formMethods.formState.errors?.[name] && (
               <div className="text-red-400 font-bold my-2 text-sm tracking-tighter">

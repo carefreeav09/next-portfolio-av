@@ -50,7 +50,12 @@ const ProjectsForm = () => {
           }}
         />
 
-        <Checkbox label="label" labelClasses="text-lg" />
+        <Checkbox
+          label="label"
+          labelClasses="text-lg"
+          formMethods={methods}
+          name="checkbox"
+        />
 
         <UploadWrapper multiple />
       </div>
