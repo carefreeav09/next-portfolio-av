@@ -12,6 +12,7 @@ import {
   Input,
   Select,
 } from "@/components/@resuable";
+import UploadWrapper from "@/components/@resuable/upload/upload";
 
 //
 const crumbs = [
@@ -84,6 +85,8 @@ const CreateProjects = () => {
               />
 
               <Checkbox label="label" labelClasses="text-lg" />
+
+              <UploadWrapper />
             </div>
 
             <Button
