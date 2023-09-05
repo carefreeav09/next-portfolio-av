@@ -86,7 +86,7 @@ const CreateProjects = () => {
 
               <Checkbox label="label" labelClasses="text-lg" />
 
-              <UploadWrapper />
+              <UploadWrapper multiple />
             </div>
 
             <Button
