@@ -41,8 +41,6 @@ const UploadComponent: React.FC<IUploadProps> = (props) => {
             if (e.target.files) {
               const files = e.target.files;
               const fileArray = Array.from(files);
-
-              console.log(fileArray, "file array");
               setFile(fileArray);
             }
           }}
