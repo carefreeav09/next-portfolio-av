@@ -22,7 +22,10 @@ interface ISelectComponentProps {
 interface ISelectWrapperProps extends ISelectComponentProps {
   name: string;
   formMethods?: UseFormReturn<FieldValues, any, undefined>;
-  required?: boolean;
+  required?: {
+    value: boolean;
+    message: string;
+  };
   labelClasses?: string;
   wrapperClasses?: string;
   rules?: any;
@@ -73,8 +76,12 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
             )}
           />
 
+          {console.log(
+            formMethods.formState.errors,
+            "errors inside the seelct"
+          )}
           {formMethods.formState.errors &&
-            formMethods.formState.errors[name] && (
+            formMethods.formState.errors?.[name] && (
               <div className="text-red-400 font-bold my-2 text-sm tracking-tighter">
                 <p>{formMethods.formState.errors?.[name]?.message as string}</p>
               </div>
@@ -127,7 +134,7 @@ const SelectComponent: React.FC<ISelectComponentProps> = (props) => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <Listbox.Options className="z-10 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {options.map((option, index) => (
               <Listbox.Option
                 key={index}

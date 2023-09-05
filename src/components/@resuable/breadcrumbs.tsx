@@ -25,7 +25,7 @@ export default function Breadcrumbs(props: IBreadcrumbProps) {
             className={classNames(
               "text-md font-normal",
               index < allItems.length - 1
-                ? "text-primary hover:text-primary-dark hover:underline"
+                ? "text-primary hover:text-primary-dark hover:underline font-semibold"
                 : "text-white font-bold"
             )}
           >
