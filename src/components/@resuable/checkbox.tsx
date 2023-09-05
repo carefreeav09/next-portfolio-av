@@ -5,14 +5,17 @@ import { MdCheck } from "react-icons/md";
 
 interface ICheckboxProps {
   label: string;
-  name?: string;
+  name: string;
   formMethods?: UseFormReturn<FieldValues, any, undefined>;
   checked?: boolean;
   setChecked?: (value: React.ChangeEvent<HTMLInputElement>) => void;
   size?: number;
   labelClasses?: string;
   wrapperClasses?: string;
-  required?: boolean;
+  required?: {
+    value: boolean;
+    message: string;
+  };
   rules?: any;
 }
 
@@ -27,42 +30,50 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
   );
 
   return (
-    <div
-      className={classNames(
-        "flex items-center justify-start gap-2",
-        props.wrapperClasses ?? ""
-      )}
-    >
-      <input
-        type="checkbox"
-        checked={props.checked}
+    <div>
+      <div
         className={classNames(
-          "peer relative appearance-none shrink-0",
-          props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`
-        )}
-        {...(formMethods && {
-          ...formMethods.register?.(name as string, {
-            required: {
-              value: required,
-              message: `${label} is required`,
-            },
-            ...rules,
-          }),
-        })}
-        // // if register doesn't exist
-        {...(setChecked && { onChange: setChecked })}
-      />
-
-      <MdCheck className={iconClasses} />
-      <label
-        htmlFor={`checkbox`}
-        className={classNames(
-          props.labelClasses ?? "",
-          "text-gray-400 text-lg font-semibold cursor-pointer"
+          "flex items-center justify-start gap-2",
+          props.wrapperClasses ?? ""
         )}
       >
-        {props.label}
-      </label>
+        <input
+          type="checkbox"
+          checked={props.checked}
+          className={classNames(
+            "peer relative appearance-none shrink-0",
+            props.size ? `w-${props.size} h-${props.size}` : `w-6 h-6`
+          )}
+          id="checkbox"
+          {...(formMethods && {
+            ...formMethods.register(name as string, {
+              required,
+              ...rules,
+            }),
+          })}
+          // // if register doesn't exist
+          {...(setChecked && { onChange: setChecked })}
+        />
+
+        <MdCheck className={iconClasses} />
+        <label
+          htmlFor={`checkbox`}
+          className={classNames(
+            props.labelClasses ?? "",
+            "text-gray-400 text-lg font-semibold cursor-pointer"
+          )}
+        >
+          {props.label}
+        </label>
+      </div>
+
+      {formMethods &&
+        formMethods.formState.errors &&
+        formMethods.formState.errors?.[name] && (
+          <div className="text-red-400 font-bold my-2 text-sm tracking-tighter">
+            <p>{formMethods.formState.errors?.[name]?.message as string}</p>
+          </div>
+        )}
     </div>
   );
 };

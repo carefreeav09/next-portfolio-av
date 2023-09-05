@@ -52,9 +52,13 @@ const ProjectsForm = () => {
 
         <Checkbox
           label="label"
+          name="checkbox"
           labelClasses="text-lg"
           formMethods={methods}
-          name="checkbox"
+          required={{
+            value: true,
+            message: "Field is required",
+          }}
         />
 
         <UploadWrapper multiple />
