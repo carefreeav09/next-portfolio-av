@@ -61,7 +61,7 @@ const ProjectsForm = () => {
           }}
         />
 
-        <UploadWrapper multiple />
+        <UploadWrapper multiple label="Uplaod" />
       </div>
     </>
   );

@@ -1,13 +1,30 @@
+import classNames from "classnames";
 import React, { useRef, useState } from "react";
 import { ImUpload } from "react-icons/im";
 import { TiDeleteOutline } from "react-icons/ti";
 
 interface IUploadProps {
+  label: string;
   multiple?: boolean;
+  wrapperClasses?: string;
+  labelClasses?: string;
+  name: string;
 }
 const UploadWrapper: React.FC<IUploadProps> = (props) => {
+  const { label, wrapperClasses, labelClasses, name } = props;
   return (
-    <div>
+    <div className={classNames(wrapperClasses ?? "")}>
+      {label && (
+        <label
+          htmlFor={name}
+          className={classNames(
+            labelClasses ?? "",
+            "text-gray-400 text-lg font-semibold mb-2"
+          )}
+        >
+          {label}
+        </label>
+      )}
       <UploadComponent {...props} />
     </div>
   );
