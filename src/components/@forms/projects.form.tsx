@@ -73,25 +73,6 @@ const ProjectsForm = () => {
           }}
         />
 
-        {fields &&
-          fields.map((field, index) => (
-            <div className="grid grid-cols-2" key={field.id}>
-              <Input
-                name={`technologies[${index}]`}
-                label="Technology"
-                register={methods.register}
-                placeholder="Technology Name"
-                required
-                errors={methods.formState.errors}
-                wrapperClasses="col-span-2"
-              />
-            </div>
-          ))}
-
-        <div>
-          <Button />
-        </div>
-
         <Checkbox
           label="label"
           name="checkbox"
