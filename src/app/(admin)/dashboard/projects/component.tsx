@@ -93,7 +93,7 @@ const ProjectsListComponent = ({ projects }: { projects: IProject[] }) => {
 
           <Button
             size="medium"
-            variant="indigo-800"
+            variant="primary"
             className="rounded-md"
             onClick={() => {
               //

@@ -48,7 +48,7 @@ const CreateProjects = () => {
               <Button
                 htmlType="submit"
                 size="medium"
-                variant="indigo-800"
+                variant="primary"
                 className="my-2"
               >
                 Submit

@@ -14,6 +14,7 @@ module.exports = {
       },
       colors: {
         primary: "#4338ca",
+        primaryDark: "#2b2b52",
         secondary: "rgb(23 37 84)",
         tertiary: "rgb(2 132 199)",
         navbar: "rgb(17 24 39)",
