@@ -2,7 +2,14 @@ import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
 //
-import { Input, Select, Checkbox, Textarea, Upload } from "../@resuable";
+import {
+  Input,
+  Select,
+  Checkbox,
+  Textarea,
+  Upload,
+  Button,
+} from "../@resuable";
 
 const ProjectsForm = () => {
   const methods = useFormContext();
@@ -65,6 +72,25 @@ const ProjectsForm = () => {
             message: "Field is required",
           }}
         />
+
+        {fields &&
+          fields.map((field, index) => (
+            <div className="grid grid-cols-2" key={field.id}>
+              <Input
+                name={`technologies[${index}]`}
+                label="Technology"
+                register={methods.register}
+                placeholder="Technology Name"
+                required
+                errors={methods.formState.errors}
+                wrapperClasses="col-span-2"
+              />
+            </div>
+          ))}
+
+        <div>
+          <Button />
+        </div>
 
         <Checkbox
           label="label"

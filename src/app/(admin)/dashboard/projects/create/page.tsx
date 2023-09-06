@@ -32,7 +32,11 @@ const crumbs = [
 ];
 
 const CreateProjects = () => {
-  const methods = useForm();
+  const methods = useForm({
+    defaultValues: {
+      technologies: ["asdsad"],
+    },
+  });
   const onSubmit = (data: any) => console.log(data);
 
   return (
