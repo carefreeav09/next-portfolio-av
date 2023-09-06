@@ -7,6 +7,7 @@ import Input from "./input";
 import Select from "./select";
 import Checkbox from "./checkbox";
 import Upload from "./upload";
+import Textarea from "./textarea";
 
 export {
   Breadcrumbs,
@@ -18,4 +19,5 @@ export {
   Select,
   Checkbox,
   Upload,
+  Textarea,
 };

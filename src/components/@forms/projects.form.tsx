@@ -1,12 +1,19 @@
 import React from "react";
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
 //
-import { Input, Select, Checkbox, Button } from "../@resuable";
-import UploadWrapper from "../@resuable/upload/upload";
+import { Input, Select, Checkbox, Textarea, Upload } from "../@resuable";
 
 const ProjectsForm = () => {
   const methods = useFormContext();
+
+  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
+    {
+      control: methods.control,
+      name: "technologies",
+    }
+  );
+
   return (
     <>
       <div className="grid grid-cols-2 gap-x-8 gap-y-4 items-center">
@@ -27,6 +34,15 @@ const ProjectsForm = () => {
           }}
           required
           errors={methods.formState.errors}
+          wrapperClasses="col-span-2"
+        />
+
+        <Textarea
+          type="textarea"
+          name="description"
+          label="Description"
+          placeholder="Description"
+          wrapperClasses="col-span-2"
         />
 
         <Select
@@ -61,7 +77,7 @@ const ProjectsForm = () => {
           }}
         />
 
-        <UploadWrapper
+        <Upload
           multiple
           label="Uplaod"
           name="thumbnail"
