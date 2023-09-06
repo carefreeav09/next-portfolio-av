@@ -61,7 +61,16 @@ const ProjectsForm = () => {
           }}
         />
 
-        <UploadWrapper multiple label="Uplaod" />
+        <UploadWrapper
+          multiple
+          label="Uplaod"
+          name="thumbnail"
+          formMethods={methods}
+          required={{
+            value: true,
+            message: "Field is required",
+          }}
+        />
       </div>
     </>
   );

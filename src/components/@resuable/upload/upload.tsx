@@ -1,14 +1,23 @@
 import classNames from "classnames";
 import React, { useRef, useState } from "react";
+import { UseFormReturn, FieldValues } from "react-hook-form";
+
+//
 import { ImUpload } from "react-icons/im";
 import { TiDeleteOutline } from "react-icons/ti";
 
 interface IUploadProps {
+  name: string;
   label: string;
+  formMethods?: UseFormReturn<FieldValues, any, undefined>;
+  required?: {
+    value: boolean;
+    message: string;
+  };
   multiple?: boolean;
   wrapperClasses?: string;
   labelClasses?: string;
-  name: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 const UploadWrapper: React.FC<IUploadProps> = (props) => {
   const { label, wrapperClasses, labelClasses, name } = props;
@@ -33,6 +42,8 @@ const UploadWrapper: React.FC<IUploadProps> = (props) => {
 export default UploadWrapper;
 
 const UploadComponent: React.FC<IUploadProps> = (props) => {
+  const { label, name, formMethods, required, onChange } = props;
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File | File[] | null>(null);
 
@@ -62,8 +73,24 @@ const UploadComponent: React.FC<IUploadProps> = (props) => {
             }
           }}
           multiple={props.multiple}
+          {...(formMethods &&
+            formMethods.register && {
+              ...formMethods.register?.(props.name, {
+                required,
+              }),
+            })}
+          // if register doesn't exist
+          {...(onChange && { onChange: onChange })}
         />
       </div>
+
+      {formMethods &&
+        formMethods.formState.errors &&
+        formMethods.formState.errors?.[name] && (
+          <div className="text-red-400 font-bold my-2 text-sm tracking-tighter">
+            <p>{formMethods.formState.errors?.[name]?.message as string}</p>
+          </div>
+        )}
 
       {file &&
         file instanceof Array &&
