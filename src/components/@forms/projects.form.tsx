@@ -11,15 +11,10 @@ import {
   Button,
 } from "../@resuable";
 
+import { TECHNOLOGIES_LIST } from "@/config";
+
 const ProjectsForm = () => {
   const methods = useFormContext();
-
-  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-    {
-      control: methods.control,
-      name: "technologies",
-    }
-  );
 
   return (
     <>
@@ -50,6 +45,19 @@ const ProjectsForm = () => {
           label="Description"
           placeholder="Description"
           wrapperClasses="col-span-2"
+        />
+
+        <Select
+          label={"Technologies"}
+          placeholder={"Select Technologies"}
+          options={TECHNOLOGIES_LIST}
+          formMethods={methods}
+          name="technologies"
+          required={{
+            value: true,
+            message: "Field is required",
+          }}
+          multiple
         />
 
         <Select

@@ -13,10 +13,11 @@ interface IOptions {
 interface ISelectComponentProps {
   options: IOptions[];
   name: string;
-  value?: string | number | boolean;
-  onChange?: (value: string | number | boolean) => void;
+  value?: string | number | boolean | string[];
+  onChange?: (value: string | number | boolean | string[]) => void;
   label?: string;
   placeholder?: string;
+  multiple?: boolean;
 }
 
 interface ISelectWrapperProps extends ISelectComponentProps {
@@ -44,6 +45,7 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
     value,
     onChange,
     placeholder,
+    multiple,
   } = props;
   return (
     <div className={classNames(wrapperClasses ?? "")}>
@@ -70,7 +72,7 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
             }}
             render={({ field: { value, onChange } }) => (
               <SelectComponent
-                {...{ value, onChange, options, name }}
+                {...{ value, onChange, options, name, multiple }}
                 placeholder={placeholder ? placeholder : label ?? ""}
               />
             )}
@@ -89,6 +91,7 @@ const Select: React.FC<ISelectWrapperProps> = (props) => {
             onChange={onChange}
             options={options}
             name={name}
+            multiple={multiple}
             placeholder={placeholder ? placeholder : label ?? ""}
           />
         </>
@@ -101,21 +104,36 @@ export default Select;
 
 //
 const SelectComponent: React.FC<ISelectComponentProps> = (props) => {
-  const { value, onChange, options, placeholder, label } = props;
+  const { value, onChange, options, placeholder, label, multiple } = props;
 
   return (
-    <Listbox value={value} onChange={onChange}>
+    <Listbox value={value} onChange={onChange} multiple={multiple}>
       <div className="relative">
-        <Listbox.Button className="h-10 relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-          <span className="block truncate text-black">
+        <Listbox.Button className="min-h-[40px] relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <div className="flex truncate text-black flex-wrap items-start">
             {typeof value === "boolean"
               ? value
                 ? "True"
                 : "False "
               : value
-              ? value
+              ? multiple
+                ? value && (
+                    <div className="flex items-center justify-start gap-2">
+                      {Object.values(value).map(
+                        (val: string, index: number) => (
+                          <span
+                            key={index}
+                            className="flex justify-start gap-4 px-2 py-1 bg-primary rounded-full text-white capitalize"
+                          >
+                            {val}
+                          </span>
+                        )
+                      )}
+                    </div>
+                  )
+                : value
               : placeholder ?? label ?? ""}
-          </span>
+          </div>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <BsChevronBarUp
               className="h-5 w-5 text-gray-400"

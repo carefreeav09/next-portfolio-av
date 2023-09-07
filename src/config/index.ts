@@ -1,4 +1,4 @@
-const TECHNOLOGIES_LIST = [
+export const TECHNOLOGIES_LIST = [
     {
         label: 'React',
         value: 'react'
