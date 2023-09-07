@@ -30,7 +30,7 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
   );
 
   return (
-    <div>
+    <>
       <div
         className={classNames(
           "flex items-center justify-start gap-2",
@@ -74,7 +74,7 @@ const Checkbox: React.FC<ICheckboxProps> = (props) => {
             <p>{formMethods.formState.errors?.[name]?.message as string}</p>
           </div>
         )}
-    </div>
+    </>
   );
 };
 

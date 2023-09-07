@@ -60,48 +60,70 @@ const ProjectsForm = () => {
           multiple
         />
 
+        <Input
+          name={"url"}
+          label="App live URL"
+          register={methods.register}
+          placeholder="Project Name"
+          required
+          errors={methods.formState.errors}
+          wrapperClasses="col-span-1"
+        />
+
+        <Input
+          name={"github"}
+          label="Repository URL"
+          register={methods.register}
+          placeholder="Project Name"
+          required
+          errors={methods.formState.errors}
+          wrapperClasses="col-span-1"
+        />
+
         <Select
-          label={"Select"}
+          label={"App Type"}
           placeholder={"Select"}
           options={[
             {
-              label: "True",
-              value: true,
+              label: "Web App",
+              value: "webapp",
             },
             {
-              label: "False",
-              value: false,
+              label: "Mobile",
+              value: "mobile",
             },
           ]}
           formMethods={methods}
-          name="select"
+          name="appType"
           required={{
             value: true,
-            message: "Field is required",
+            message: "Please select app type",
           }}
         />
 
         <Checkbox
-          label="label"
-          name="checkbox"
+          label="Freelance"
+          name="freelance"
           labelClasses="text-lg"
           formMethods={methods}
           required={{
             value: true,
             message: "Field is required",
           }}
+          wrapperClasses="col-span-2"
         />
 
         <Upload
-          multiple
-          label="Uplaod"
+          label="Upload Thumbnail"
           name="thumbnail"
           formMethods={methods}
           required={{
             value: true,
-            message: "Field is required",
+            message: "Thumbnail is required",
           }}
         />
+
+        <Upload label="Upload Images" name="images" formMethods={methods} />
       </div>
     </>
   );
