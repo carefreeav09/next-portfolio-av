@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { on } from "events";
 import React, { useRef, useState } from "react";
 import { UseFormReturn, FieldValues } from "react-hook-form";
 
@@ -65,13 +66,6 @@ const UploadComponent: React.FC<IUploadProps> = (props) => {
           type="file"
           ref={inputRef}
           className="absolute h-[inherit] w-full opacity-0"
-          onChange={(e) => {
-            if (e.target.files) {
-              const files = e.target.files;
-              const fileArray = Array.from(files);
-              setFile(fileArray);
-            }
-          }}
           multiple={props.multiple}
           {...(formMethods &&
             formMethods.register && {
@@ -79,8 +73,16 @@ const UploadComponent: React.FC<IUploadProps> = (props) => {
                 required,
               }),
             })}
-          // if register doesn't exist
-          {...(onChange && { onChange: onChange })}
+          onChange={(e) => {
+            console.log(e, "e");
+            if (e.target.files) {
+              const files = e.target.files;
+              const fileArray = Array.from(files);
+              setFile(fileArray);
+
+              if (onChange) onChange(e);
+            }
+          }}
         />
       </div>
 

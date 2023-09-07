@@ -111,28 +111,32 @@ const SelectComponent: React.FC<ISelectComponentProps> = (props) => {
       <div className="relative">
         <Listbox.Button className="min-h-[40px] relative w-full cursor-default rounded-md bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
           <div className="flex truncate text-black flex-wrap items-start">
-            {typeof value === "boolean"
-              ? value
-                ? "True"
-                : "False "
-              : value
-              ? multiple
-                ? value && (
-                    <div className="flex items-center justify-start gap-2">
-                      {Object.values(value).map(
-                        (val: string, index: number) => (
-                          <span
-                            key={index}
-                            className="flex justify-start gap-4 px-2 py-1 bg-primary rounded-full text-white capitalize"
-                          >
-                            {val}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  )
-                : value
-              : placeholder ?? label ?? ""}
+            {typeof value === "boolean" ? (
+              value ? (
+                "True"
+              ) : (
+                "False "
+              )
+            ) : value ? (
+              multiple ? (
+                value && (
+                  <div className="flex items-center justify-start gap-2">
+                    {Object.values(value).map((val: string, index: number) => (
+                      <span
+                        key={index}
+                        className="flex justify-start gap-4 px-2 py-1 bg-primary rounded-full text-white capitalize"
+                      >
+                        {val}
+                      </span>
+                    ))}
+                  </div>
+                )
+              ) : (
+                <span className="capitalize">{value}</span>
+              )
+            ) : (
+              placeholder ?? label ?? ""
+            )}
           </div>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
             <BsChevronBarUp
