@@ -1,3 +1,5 @@
+import { IApiPaginatedResponse, IApiResponse } from "./api/apiResponse.types";
+
 export interface IProject {
     name: string;
     description: string;
@@ -10,3 +12,12 @@ export interface IProject {
     appType: string
     _id: number,
 }
+
+
+
+export interface IApiResponseProjectsList
+    extends IApiPaginatedResponse<IProject> { }
+
+//
+export interface IApiResponseProjectsDetail
+    extends IApiResponse<IProject> { }

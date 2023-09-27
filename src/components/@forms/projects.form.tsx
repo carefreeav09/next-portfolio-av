@@ -123,7 +123,12 @@ const ProjectsForm = () => {
           }}
         />
 
-        <Upload label="Upload Images" name="images" formMethods={methods} />
+        <Upload
+          label="Upload Images"
+          name="images"
+          formMethods={methods}
+          multiple
+        />
       </div>
     </>
   );

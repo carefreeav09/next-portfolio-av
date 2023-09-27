@@ -1,19 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 
 import PageWrapper from "@/components/@app/PageWrapper";
-import {
-  Breadcrumbs,
-  Button,
-  Checkbox,
-  Container,
-  Input,
-  Select,
-} from "@/components/@resuable";
-import UploadWrapper from "@/components/@resuable/upload/upload";
+import { Breadcrumbs, Button, Container } from "@/components/@resuable";
 import ProjectsForm from "@/components/@forms/projects.form";
+
+import useProjectsApi from "@/api/projects.api";
 
 //
 const crumbs = [
@@ -33,7 +27,24 @@ const crumbs = [
 
 const CreateProjects = () => {
   const methods = useForm({});
-  const onSubmit = (data: any) => console.log(data);
+
+  const { createProject } = useProjectsApi();
+  const onSubmit = async (data: any) => {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      if ((key === "thumbnail" || key === "images") && value) {
+        const fileArray = Array.from<File>(value as FileList);
+        fileArray.forEach((file) => {
+          formData.append(key, file);
+        });
+      } else {
+        formData.append(key, JSON.stringify(value));
+      }
+    });
+
+    const response = await createProject(formData);
+  };
 
   return (
     <PageWrapper>

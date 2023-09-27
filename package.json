@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "imports": {
+    "#types/*": "./src/types/*",
+    "#components/*": "./src/components/*",
+    "#utils/*": "./src/utils/*"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@tanstack/react-query": "^4.33.0",
@@ -17,6 +22,7 @@
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
+    "axios": "^1.5.1",
     "classnames": "^2.3.2",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",

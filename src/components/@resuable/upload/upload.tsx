@@ -18,7 +18,7 @@ interface IUploadProps {
   multiple?: boolean;
   wrapperClasses?: string;
   labelClasses?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: any[]) => void;
 }
 const UploadWrapper: React.FC<IUploadProps> = (props) => {
   const { label, wrapperClasses, labelClasses, name } = props;
@@ -80,7 +80,7 @@ const UploadComponent: React.FC<IUploadProps> = (props) => {
               const fileArray = Array.from(files);
               setFile(fileArray);
 
-              if (onChange) onChange(e);
+              if (onChange) onChange(fileArray);
             }
           }}
         />
