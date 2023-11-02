@@ -37,36 +37,29 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       </head>
       <body className={inter.className}>
         <div className='flex items-stretch justify-start min-h-screen h-full'>
-          <nav className='flex-[0.1]  text-white flex items-center flex-col justify-center'>
+          <nav className='flex-[0.1] min-w-[10%] h-screen text-white flex items-center flex-col justify-center fixed left-0 top-0 z-50'>
             <section className='items-center justify-center flex flex-col'>
-              <div className='flex items-center justify-center'>
+              <motion.div
+                whileHover={{scale: 1.5}}
+                whileTap={{
+                  scale: 0.9,
+                }}
+                onClick={() => {
+                  router.push('/main');
+                }}
+                className='flex items-center justify-center'
+              >
                 <Image
                   priority
                   src={'/images/pp.jpeg'}
                   alt='profile-picture'
                   width='1920'
                   height={'1080'}
-                  className='h-10 w-auto rounded-full'
+                  className='h-12 w-auto rounded-full'
                 />
-              </div>
+              </motion.div>
 
               <div className='mt-10 flex flex-col gap-10'>
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/main');
-                  }}
-                >
-                  <motion.div
-                    whileHover={{scale: 1.5}}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <HiHome style={iconStyles} />
-                  </motion.div>
-                </div>
-
                 <div
                   className='flex items-center justify-center flex-col cursor-pointer'
                   onClick={() => {
@@ -150,7 +143,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </section>
           </nav>
 
-          <main className='flex-1'>{children}</main>
+          <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
         </div>
       </body>
     </html>
