@@ -19,9 +19,9 @@
   }
 }
 
-* {
+/* * {
   font-family: 'Poppins', sans-serif;
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));

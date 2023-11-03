@@ -2,7 +2,7 @@
 
 import '../globals.css';
 import type {Metadata} from 'next';
-import {Inter} from 'next/font/google';
+import {Inter, Titillium_Web} from 'next/font/google';
 import {usePathname, useRouter} from 'next/navigation';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
@@ -18,6 +18,10 @@ import {BsPostcard} from 'react-icons/bs';
 import {MdOutlineDashboard} from 'react-icons/md';
 
 const inter = Inter({subsets: ['latin']});
+const titilliumWeb = Titillium_Web({
+  subsets: ['latin'],
+  weight: ['400', '600', '700', '900'],
+});
 
 const metadata: Metadata = {
   title: 'Create Next App',
@@ -35,7 +39,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
         <link rel='icon' type='image/x-icon' href='/images/pp.ico' />
       </head>
-      <body className={inter.className}>
+      <body className={titilliumWeb.className}>
         <div className='flex items-stretch justify-start min-h-screen h-full'>
           <nav className='flex-[0.1] min-w-[10%] h-screen text-white flex items-center flex-col justify-center fixed left-0 top-0 z-50'>
             <section className='items-center justify-center flex flex-col'>
