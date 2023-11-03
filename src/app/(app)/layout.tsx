@@ -3,10 +3,10 @@
 import '../globals.css';
 import type {Metadata} from 'next';
 import {Inter, Titillium_Web} from 'next/font/google';
-import {usePathname, useRouter} from 'next/navigation';
+import {usePathname, useRouter, useSearchParams} from 'next/navigation';
 import {motion} from 'framer-motion';
 import Image from 'next/image';
-import {useState} from 'react';
+import {Suspense, useEffect, useState} from 'react';
 import {
   HiHome,
   HiOutlineUser,
@@ -16,6 +16,7 @@ import {
 
 import {BsPostcard} from 'react-icons/bs';
 import {MdOutlineDashboard} from 'react-icons/md';
+import {AppRouterInstance} from 'next/dist/shared/lib/app-router-context';
 
 const inter = Inter({subsets: ['latin']});
 const titilliumWeb = Titillium_Web({
@@ -30,7 +31,6 @@ const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   const router = useRouter();
-  //
 
   return (
     <html lang='en'>
@@ -147,7 +147,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </section>
           </nav>
 
-          <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
+          <Suspense fallback={<div>XDXD</div>}>
+            <NavigationEvents />
+            <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
+          </Suspense>
         </div>
       </body>
     </html>
@@ -158,3 +161,17 @@ const iconStyles = {
   fontSize: '2rem',
   marginBottom: '0.1rem',
 };
+
+export function NavigationEvents() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const url = `${pathname}?${searchParams}`;
+    console.log(url);
+    // You can now use the current URL
+    // ...
+  }, [pathname, searchParams]);
+
+  return null;
+}
