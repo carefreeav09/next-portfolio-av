@@ -69,7 +69,7 @@ const ProjectsForm = () => {
           label='Repository URL'
           register={methods.register}
           placeholder='Project Name'
-          required
+          required={false}
           errors={methods.formState.errors}
           wrapperClasses='col-span-1'
         />

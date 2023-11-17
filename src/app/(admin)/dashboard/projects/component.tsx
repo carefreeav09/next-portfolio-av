@@ -60,6 +60,8 @@ const ProjectsListComponent = ({projects}: {projects: IProject[]}) => {
               console.log(info, 'info');
               console.log(info.getValue(), 'info get value');
               deleteProject(info.getValue().toString());
+
+              window.location.reload();
             }}
           >
             <MdDelete />

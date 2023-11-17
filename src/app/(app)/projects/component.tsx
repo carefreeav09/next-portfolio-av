@@ -85,6 +85,10 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
                       translateY: -10,
                       boxShadow: '#111827 0px 7px 20px 0px',
                     }}
+                    className='shadow shadow-white rounded-lg'
+                    whileInView={{
+                      boxShadow: '#111827 0px 3px 10px 0px',
+                    }}
                   >
                     <div className='h-60 w-full overflow-hidden'>
                       <Image
@@ -92,7 +96,7 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
                         width={800}
                         height={800}
                         alt={`${p.name} alt`}
-                        className='h-[inherit] w-[inherit] object-cover scale-100 hover:transition-transform hover:scale-110 duration-1000 ease-in-out object-center'
+                        className='h-[inherit] w-[inherit] object-contain scale-100 hover:transition-transform hover:scale-110 duration-1000 ease-in-out object-center'
                       />
                     </div>
                     <div className='p-4 flex flex-col gap-4 '>
@@ -101,22 +105,27 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
                           {p.name}
                         </p>
                         <p className='text-sm tracking-tighter text-gray-400 '>
-                          {p.description}
+                          {p.description.length > 20
+                            ? `${p.description
+                                .split(' ')
+                                .slice(0, 16)
+                                .join(' ')} ...`
+                            : p.description}
                         </p>
                       </div>
 
-                      {p.technologies.map((t) => {
-                        const technologiesArray = t.split(',');
-
-                        return (
-                          <div
-                            key={t}
-                            className='px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter gap-2 grid grid-cols-3'
-                          >
-                            <p className='col-span-1 bg-red-400 px-2'>{t}</p>
-                          </div>
-                        );
-                      })}
+                      <div className='grid grid-cols-3 gap-2 break-words'>
+                        {p?.technologies?.slice(0, 3).map((t) => {
+                          return (
+                            <div
+                              key={t}
+                              className='px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter gap-2 capitalize'
+                            >
+                              {t}
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </motion.div>
                 ))
