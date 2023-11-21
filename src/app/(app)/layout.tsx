@@ -147,7 +147,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             </section>
           </nav>
 
-          <Suspense fallback={<div>XDXD</div>}>
+          <Suspense>
             <NavigationEvents />
             <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
           </Suspense>

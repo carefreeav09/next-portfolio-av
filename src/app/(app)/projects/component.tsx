@@ -153,10 +153,10 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
             transition={{type: 'spring'}}
             key={selectedId}
             className={classNames(
-              'absolute top-[10%]  rounded-lg shadow-lg w-1/2',
+              'absolute top-[10%] rounded-lg shadow-lg',
               getCurrentSelectedProject()?.appType === 'webapp'
-                ? 'w-1/2 left-[25%]'
-                : 'w-1/3 left-[35%]'
+                ? 'xl:w-1/2 xl:left-[25%] left-0 w-full'
+                : 'xl:w-1/3 xl:left-[35%] left-0 w-full'
             )}
           >
             <div className='flex flex-col justify-start items-start gap-4 bg-gray-900'>

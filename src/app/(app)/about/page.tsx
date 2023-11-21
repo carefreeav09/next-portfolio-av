@@ -27,7 +27,7 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          className='flex justify-between gap-12 mt-10 mb-4'
+          className='flex justify-between gap-12 mt-10 mb-4 flex-col xl:flex-row'
           variants={item}
         >
           <div className='flex justify-center items-center flex-col gap-4'>
@@ -143,7 +143,7 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          className='mt-10 grid grid-cols-5 gap-6 gap-y-6'
+          className='mt-10 grid xl:grid-cols-5 gap-6 gap-y-6 grid-cols-1'
           variants={item}
         >
           <motion.div

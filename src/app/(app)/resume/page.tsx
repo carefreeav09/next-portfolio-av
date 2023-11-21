@@ -49,11 +49,11 @@ const draw = {
 const Resume = () => {
   return (
     <PageWrapper>
-      <div className='min-h-screen h-full py-32'>
+      <div className='min-h-screen h-full py-32 overflow-x-hidden'>
         {/* Work history column */}
-        <div className='w-11/12 m-auto flex justify-around items-start'>
+        <div className='w-11/12 m-auto flex justify-around items-start flex-col xl:flex-row'>
           <div className='flex-1'>
-            <div className='flex items-center justify-start gap-8'>
+            <div className='flex items-center justify-start gap-8 flex-col xl:flex-row'>
               <div className='text-2xl rounded-full bg-indigo-800 p-4'>
                 <HiBookmark />
               </div>
@@ -125,7 +125,7 @@ const Resume = () => {
                 <MdSchool />
               </div>
 
-              <p className='text-2xl font-semibold'>education</p>
+              <p className='text-3xl font-semibold'>Education</p>
             </div>
             {/* side line */}
             <div className='w-full h-full mx-8 border-l-2 border-gray-900'>
@@ -152,10 +152,10 @@ const Resume = () => {
               <p className='text-bold text-xl lowercase'>Download CV</p>
             </motion.div>
           </div>
-          <div className='flex-[0.5] flex justify-center items-center flex-col'>
+          <div className='flex-[0.5] flex justify-center items-center flex-col my-6 xl:my-0 pl-6'>
             <Ribbon title='skills' />
 
-            <div className='mt-20 bg-red grid grid-cols-2 gap-x-6'>
+            <div className='mt-20 bg-red grid grid-cols-1 xl:grid-cols-2 gap-x-6 items-center justify-items-center'>
               <SkillsCircle
                 title={'React/Native'}
                 percentage={90}
