@@ -1,7 +1,7 @@
-import React from "react";
-import ProjectsComponent from "./component";
+import React from 'react';
+import ProjectsComponent from './component';
 
-const ProjectsWrapper = async ({ children }: { children: any }) => {
+const ProjectsWrapper = async () => {
   //
   const data = await getProjectsData();
 
@@ -12,7 +12,7 @@ const ProjectsWrapper = async ({ children }: { children: any }) => {
 export default ProjectsWrapper;
 
 async function getProjectsData() {
-  const res = await fetch(process.env.API_URL + "/api/v1/projects", {
+  const res = await fetch(process.env.API_URL + '/api/v1/projects', {
     next: {
       revalidate: 1, // in minutes
     },
