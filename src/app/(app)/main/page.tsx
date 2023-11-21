@@ -2,6 +2,7 @@
 import React, {useEffect, useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import PageWrapper from '@/components/@app/PageWrapper';
+import {useRouter} from 'next/navigation';
 
 type Role = string;
 
@@ -13,8 +14,10 @@ const ROLES_LIST = [
 ];
 
 const MainPageContent = () => {
+  const navigate = useRouter();
   //
   const [roles, setRoles] = useState<Role>('Full Stack Developer');
+  const [count, setCount] = useState(0);
 
   //
   useEffect(() => {
@@ -31,17 +34,17 @@ const MainPageContent = () => {
 
   return (
     <PageWrapper>
-      {/* <div
-        className='h-screen relative'
-        // style={{
-        //   backgroundImage:
-        //     "linear-gradient(#00000990, #000000e6), url(/images/pp.jpg)",
-        //   backgroundPosition: "center",
-        //   backgroundSize: "cover",
-        // }}
-      > */}
       <div className='flex items-center justify-center min-h-screen text-center w-full flex-col'>
-        <p className='text-2xl text-gray-400 mb-4'>Hi, I am</p>
+        <p className='text-2xl text-gray-400 mb-4'>
+          <span
+            onClick={() => {
+              setCount((prevCount) => prevCount + 1);
+            }}
+          >
+            Hi
+          </span>
+          , I am
+        </p>
         <p className='text-5xl font-bold mb-4'>Aabhushan Gautam</p>
         <p className='text-2xl text-gray-400'>
           I am a{' '}
@@ -57,6 +60,17 @@ const MainPageContent = () => {
             </motion.span>
           </AnimatePresence>
         </p>
+
+        {count > 5 && (
+          <p
+            className='text-xl text-blue-200 my-5'
+            onClick={() => {
+              navigate.push('/login');
+            }}
+          >
+            Login
+          </p>
+        )}
       </div>
       {/* </div> */}
     </PageWrapper>

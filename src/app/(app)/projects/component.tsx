@@ -8,6 +8,9 @@ import {Gi3DGlasses} from 'react-icons/gi';
 import Image from 'next/image';
 import {IProject} from '../../../types/projects.types';
 
+//
+import {TfiWorld} from 'react-icons/tfi';
+
 const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
   //
   const [activeTab, setActiveTab] = React.useState('all');
@@ -19,6 +22,8 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
 
     return projects.find((p) => p._id === selectedId);
   };
+
+  const selectedProject = getCurrentSelectedProject();
 
   return (
     <PageWrapper>
@@ -168,23 +173,61 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
                 )}
               />
               <div className='p-6 flex flex-col gap-4'>
-                <div className='flex justify-start items-center gap-2'>
-                  {['react', 'typescript', 'tailwindcss'].map((t) => (
-                    <div
-                      key={t}
-                      className='px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter'
-                    >
-                      {t}
-                    </div>
-                  ))}
+                <div className='grid grid-cols-5 justify-start items-center gap-2'>
+                  {selectedProject?.technologies?.map((t: string) => {
+                    return (
+                      <div
+                        key={t}
+                        className='px-2 py-1 bg-gray-800 rounded-lg text-sm font-bold tracking-tighter gap-2 capitalize'
+                      >
+                        {t}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className='flex flex-col justify-start items-start gap-2'>
                   <p className='text-xl font-bold tracking-tighter'>
-                    {projects.find((p) => p._id === selectedId) &&
-                      projects?.find((p) => p._id === selectedId)?.name}
+                    {selectedProject?.name}
                   </p>
-                  <p className='text-sm font-bold tracking-tighter text-gray-400'></p>
+                  <p className='text-sm font-bold tracking-tighter text-gray-400'>
+                    {selectedProject?.description}
+                  </p>
+
+                  <p className='text-lg font-bold flex gap-2 items-center underline cursor-pointer text-blue-200'>
+                    <TfiWorld />
+                    <a href={selectedProject?.url}>{selectedProject?.url}</a>
+                  </p>
+                </div>
+
+                <p className='text-lg font-bold'>Images</p>
+
+                <div>
+                  {selectedProject?.images?.map((img) => {
+                    return (
+                      <div key={img} className='w-full h-[400px] mb-6'>
+                        <Image
+                          src={img}
+                          width={1800}
+                          height={1800}
+                          alt={`alt`}
+                          className='object-cover h-full w-full'
+                        />
+                      </div>
+                    );
+                  })}
+
+                  {selectedProject?.thumbnail && (
+                    <div className='w-full h-[400px]'>
+                      <Image
+                        src={selectedProject?.thumbnail}
+                        width={1800}
+                        height={1800}
+                        alt={`alt`}
+                        className='object-cover h-full w-full'
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
