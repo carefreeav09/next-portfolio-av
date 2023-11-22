@@ -40,6 +40,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel='icon' type='image/x-icon' href='/images/pp.ico' />
       </head>
       <body className={titilliumWeb.className}>
+        <div className='absolute top-8 right-8  text-red-200 px-5 rounded-full bg-slate-800'>
+          Site is still under construction. Please excuse the mess
+        </div>
+
         <div className='flex items-stretch justify-start min-h-screen h-full'>
           <nav className='flex-[0.1] min-w-[10%] h-screen text-white flex items-center flex-col justify-center fixed left-0 top-0 z-50'>
             <section className='items-center justify-center flex flex-col'>

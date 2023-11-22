@@ -36,13 +36,13 @@ const MainPageContent = () => {
     <PageWrapper>
       <div className='flex items-center justify-center min-h-screen text-center w-full flex-col'>
         <p className='text-2xl text-gray-400 mb-4'>
-          <span
+          <button
             onClick={() => {
               setCount((prevCount) => prevCount + 1);
             }}
           >
             Hi
-          </span>
+          </button>
           , I am
         </p>
         <p className='text-5xl font-bold mb-4'>Aabhushan Gautam</p>
