@@ -17,6 +17,7 @@ import {
 import {BsPostcard} from 'react-icons/bs';
 import {MdOutlineDashboard} from 'react-icons/md';
 import {AppRouterInstance} from 'next/dist/shared/lib/app-router-context';
+import ErrorBoundaryHandler from './error';
 
 const inter = Inter({subsets: ['latin']});
 const titilliumWeb = Titillium_Web({
@@ -40,122 +41,125 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel='icon' type='image/x-icon' href='/images/pp.ico' />
       </head>
       <body className={titilliumWeb.className}>
-        <div className='absolute top-8 right-8  text-red-200 px-5 rounded-full bg-slate-800'>
-          Site is still under construction. Please excuse the mess
-        </div>
-
-        <div className='flex items-stretch justify-start min-h-screen h-full'>
-          <nav className='flex-[0.1] min-w-[10%] h-screen text-white flex items-center flex-col justify-center fixed left-0 top-0 z-50'>
-            <section className='items-center justify-center flex flex-col'>
-              <motion.div
-                whileHover={{scale: 1.5}}
-                whileTap={{
-                  scale: 0.9,
-                }}
-                onClick={() => {
-                  router.push('/main');
-                }}
-                className='flex items-center justify-center'
-              >
-                <Image
-                  priority
-                  src={'/images/pp.jpeg'}
-                  alt='profile-picture'
-                  width='1920'
-                  height={'1080'}
-                  className='h-12 w-auto rounded-full'
-                />
-              </motion.div>
-
-              <div className='mt-10 flex flex-col gap-10'>
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/about');
-                  }}
-                >
+        <ErrorBoundaryHandler>
+          <>
+            <div className='absolute top-8 right-8  text-red-200 px-5 rounded-full bg-slate-800'>
+              Site is still under construction. Please excuse the mess
+            </div>
+            <div className='flex items-stretch justify-start min-h-screen h-full'>
+              <nav className='flex-[0.1] min-w-[10%] h-screen text-white flex items-center flex-col justify-center fixed left-0 top-0 z-50'>
+                <section className='items-center justify-center flex flex-col'>
                   <motion.div
                     whileHover={{scale: 1.5}}
                     whileTap={{
                       scale: 0.9,
                     }}
-                  >
-                    <HiOutlineUser style={iconStyles} />
-                  </motion.div>
-                </div>
-
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/resume');
-                  }}
-                >
-                  <motion.div
-                    whileHover={{scale: 1.5}}
-                    whileTap={{
-                      scale: 0.9,
+                    onClick={() => {
+                      router.push('/main');
                     }}
+                    className='flex items-center justify-center'
                   >
-                    <HiOutlineDocumentText style={iconStyles} />
+                    <Image
+                      priority
+                      src={'/images/pp.jpeg'}
+                      alt='profile-picture'
+                      width='1920'
+                      height={'1080'}
+                      className='h-12 w-auto rounded-full'
+                    />
                   </motion.div>
-                </div>
 
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/projects');
-                  }}
-                >
-                  <motion.div
-                    whileHover={{scale: 1.5}}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <MdOutlineDashboard style={iconStyles} />
-                  </motion.div>
-                </div>
+                  <div className='mt-10 flex flex-col gap-10'>
+                    <div
+                      className='flex items-center justify-center flex-col cursor-pointer'
+                      onClick={() => {
+                        router.push('/about');
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{scale: 1.5}}
+                        whileTap={{
+                          scale: 0.9,
+                        }}
+                      >
+                        <HiOutlineUser style={iconStyles} />
+                      </motion.div>
+                    </div>
 
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/blog');
-                  }}
-                >
-                  <motion.div
-                    whileHover={{scale: 1.5}}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <BsPostcard style={iconStyles} />
-                  </motion.div>
-                </div>
+                    <div
+                      className='flex items-center justify-center flex-col cursor-pointer'
+                      onClick={() => {
+                        router.push('/resume');
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{scale: 1.5}}
+                        whileTap={{
+                          scale: 0.9,
+                        }}
+                      >
+                        <HiOutlineDocumentText style={iconStyles} />
+                      </motion.div>
+                    </div>
 
-                <div
-                  className='flex items-center justify-center flex-col cursor-pointer'
-                  onClick={() => {
-                    router.push('/contact');
-                  }}
-                >
-                  <motion.div
-                    whileHover={{scale: 1.5}}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                  >
-                    <HiOutlinePhone style={iconStyles} />
-                  </motion.div>
-                </div>
-              </div>
-            </section>
-          </nav>
+                    <div
+                      className='flex items-center justify-center flex-col cursor-pointer'
+                      onClick={() => {
+                        router.push('/projects');
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{scale: 1.5}}
+                        whileTap={{
+                          scale: 0.9,
+                        }}
+                      >
+                        <MdOutlineDashboard style={iconStyles} />
+                      </motion.div>
+                    </div>
 
-          <Suspense>
-            <NavigationEvents />
-            <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
-          </Suspense>
-        </div>
+                    <div
+                      className='flex items-center justify-center flex-col cursor-pointer'
+                      onClick={() => {
+                        router.push('/blog');
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{scale: 1.5}}
+                        whileTap={{
+                          scale: 0.9,
+                        }}
+                      >
+                        <BsPostcard style={iconStyles} />
+                      </motion.div>
+                    </div>
+
+                    <div
+                      className='flex items-center justify-center flex-col cursor-pointer'
+                      onClick={() => {
+                        router.push('/contact');
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{scale: 1.5}}
+                        whileTap={{
+                          scale: 0.9,
+                        }}
+                      >
+                        <HiOutlinePhone style={iconStyles} />
+                      </motion.div>
+                    </div>
+                  </div>
+                </section>
+              </nav>
+
+              <Suspense>
+                <NavigationEvents />
+                <main className='flex-1 ml-[10%] px-2 z-40'>{children}</main>
+              </Suspense>
+            </div>
+          </>
+        </ErrorBoundaryHandler>
       </body>
     </html>
   );

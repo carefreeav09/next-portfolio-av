@@ -1,22 +1,27 @@
 'use client';
+import {ErrorBoundary, FallbackProps} from 'react-error-boundary';
 
-import {Button} from '@/components/@resuable';
-
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & {digest?: string};
-  reset: () => void;
-}) {
+function fallbackRenderer({error, resetErrorBoundary}: FallbackProps) {
   return (
-    <div className='flex items-center justify-center min-h-screen flex-col gap-8'>
-      <h2>Something went wrong!</h2>
-      <Button onClick={() => reset()} className='block '>
-        Try again
-      </Button>
-
-      <Button onClick={() => history.back()}>Go back</Button>
+    <div role='alert'>
+      <p>Something went wrong:</p>
+      <pre style={{color: 'red'}}>{error.message}</pre>
+      <button onClick={resetErrorBoundary}>Retry</button>
     </div>
   );
 }
+
+const ErrorBoundaryHandler = ({children}: {children: React.ReactNode}) => {
+  return (
+    <ErrorBoundary
+      fallbackRender={fallbackRenderer}
+      onReset={(details) => {
+        // Reset the state of your app so the error doesn't happen again
+      }}
+    >
+      {children}
+    </ErrorBoundary>
+  );
+};
+
+export default ErrorBoundaryHandler;
