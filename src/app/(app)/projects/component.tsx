@@ -202,7 +202,13 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
 
                 <p className='text-lg font-bold'>Images</p>
 
-                <div>
+                <div
+                  className={
+                    selectedProject?.appType === 'mobile'
+                      ? 'grid grid-cols-3 gap-2'
+                      : 'grid grid-cols-1'
+                  }
+                >
                   {selectedProject?.images?.map((img) => {
                     return (
                       <div key={img} className='w-full h-[400px] mb-6'>
@@ -211,23 +217,11 @@ const ProjectsComponent = ({projects}: {projects: IProject[]}) => {
                           width={1800}
                           height={1800}
                           alt={`alt`}
-                          className='object-cover h-full w-full'
+                          className='object-contain h-full w-full'
                         />
                       </div>
                     );
                   })}
-
-                  {selectedProject?.thumbnail && (
-                    <div className='w-full h-[400px]'>
-                      <Image
-                        src={selectedProject?.thumbnail}
-                        width={1800}
-                        height={1800}
-                        alt={`alt`}
-                        className='object-cover h-full w-full'
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

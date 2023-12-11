@@ -5,7 +5,7 @@ import {motion} from 'framer-motion';
 import Image from 'next/image';
 import {useRouter} from 'next/navigation';
 // import router from "next/navigation";
-import {MdOutlineDashboard} from 'react-icons/md';
+import {MdHomeFilled, MdOutlineDashboard} from 'react-icons/md';
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   const router = useRouter();
@@ -37,7 +37,27 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
                 <div
                   className='flex items-center justify-center flex-col cursor-pointer'
                   onClick={() => {
-                    // router("/main");
+                    router.push('/main');
+                  }}
+                >
+                  <motion.div
+                    whileHover={{scale: 1.5}}
+                    whileTap={{
+                      scale: 0.9,
+                    }}
+                  >
+                    <MdHomeFilled style={iconStyles} />
+                  </motion.div>
+
+                  <p>Home</p>
+                </div>
+              </div>
+
+              <div className='mt-10 flex flex-col gap-10'>
+                <div
+                  className='flex items-center justify-center flex-col cursor-pointer'
+                  onClick={() => {
+                    router.push('/dashboard/projects');
                   }}
                 >
                   <motion.div
