@@ -16,7 +16,6 @@ import {
 
 import {BsPostcard} from 'react-icons/bs';
 import {MdOutlineDashboard} from 'react-icons/md';
-import {AppRouterInstance} from 'next/dist/shared/lib/app-router-context';
 import ErrorBoundaryHandler from './error';
 
 const inter = Inter({subsets: ['latin']});
